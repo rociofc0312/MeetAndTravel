@@ -8,6 +8,12 @@ import android.view.ViewGroup
 import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Event
 import kotlinx.android.synthetic.main.item_event.view.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import java.util.*
 
 class AllEventsAdapter(var events: List<Event>, val context: Context):
         RecyclerView.Adapter<AllEventsAdapter.ViewHolder>() {
@@ -36,6 +42,7 @@ class AllEventsAdapter(var events: List<Event>, val context: Context):
             eventImageView.setErrorImageResId(R.mipmap.ic_launcher)
             eventImageView.setImageUrl(event.eventImage)
             nameEventTextView.text = event.name
+
             dateEventTextView.text = event.startDate
             locationEventTextView.text = event.location
             /*eventLayout.setOnClickListener {
@@ -43,6 +50,12 @@ class AllEventsAdapter(var events: List<Event>, val context: Context):
                 val context = view.context
                 context.startActivity(Intent(view.context, EventActivity::class.java).putExtras(event.toBundle()))
             }*/
+        }
+
+        private fun toSimpleString(date: String?) : String {
+            val format = SimpleDateFormat("yyyy-MM-dd")
+            val dateF = format.parse(date)
+            return dateF.toString()
         }
 
     }

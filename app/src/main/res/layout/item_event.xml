@@ -12,6 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_size_180"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:src="@mipmap/ic_launcher"/>
 
         <android.support.constraint.ConstraintLayout
