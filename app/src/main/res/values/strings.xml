@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Meet&amp;Travel</string>
+    <string name="entry_text">una app de</string>
+    <string name="company_logo_text">Company Logo</string>
+    <string name="password_text">Contraseña</string>
+    <string name="forgot_text"><u>¿Ovidaste tu contraseña?</u></string>
+    <string name="skip_text">Saltar</string>
+    <string name="login_text">INICIAR SESIÓN</string>
+    <string name="register_text">REGISTRAR</string>
+    <string name="name_text">Nombre completo</string>
+    <string name="lastname_text">Apellido completo</string>
+    <string name="phone_text">Teléfono</string>
+    <string name="dni_text">DNI</string>
+    <string name="birthdate_text">Fecha de nacimiento</string>
+    <string name="email_text">Correo</string>
+
+    <string name="event_title">Eventos</string>
+    <string name="mock_text">Mock Text</string>
+    <string name="detail_event_title_text">Detalle de Evento</string>
+    <string name="providers_event_title">Proveedores de Estadías</string>
+    <string name="company_title_text">Organizadora: </string>
+    <string name="start_date_title">Inicio</string>
+    <string name="end_date_text">Fin</string>
+    <string name="address_title_text">Dirección</string>
+    <string name="providers_button_text">VER ESTADÍAS</string>
+    <string name="buy_button_text">COMPRAR</string>
+    <string name="provider_contact_title">Contacto:</string>
+    <string name="see_spaces_button_text">VER ESPACIOS</string>
+    <string name="ruc_title_text">RUC:</string>
+    <string name="web_title_text">Web:</string>
+    <string name="spaces_event_title">Espacios</string>
+    <string name="provider_event_title">Proveedor</string>
+    <string name="start_date_space_text">Desde:</string>
+    <string name="end_date_space_text">Hasta:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Home</string>
+    <string name="title_tickets">Tickets</string>
+    <string name="reservations_title">Reservas</string>
+    <string name="profile_title">Perfil</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_tickets"
+        android:icon="@drawable/ic_local_play_black_24dp"
+        android:title="@string/title_tickets" />
+
+    <item
+        android:id="@+id/navigation_myevents"
+        android:icon="@drawable/ic_event_black_24dp"
+        android:title="@string/title_tickets" />
+
+    <item
+        android:id="@+id/navigation_providers"
+        android:icon="@drawable/ic_location_city_black_24dp"
+        android:title="@string/profile_title" />
+
+    <item
+        android:id="@+id/navigation_reservations"
+        android:icon="@drawable/ic_hotel_black_24dp"
+        android:title="@string/reservations_title" />
+</menu>
