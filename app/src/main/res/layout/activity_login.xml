@@ -48,7 +48,7 @@
         android:padding="@dimen/padding_24">
 
         <EditText
-            android:id="@+id/userEditText"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
@@ -80,7 +80,7 @@
             android:textColorHint="@color/colorSecondaryText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
         <TextView
             android:id="@+id/forgotPasswordEditText"

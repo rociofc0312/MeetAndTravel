@@ -5,20 +5,36 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.MenuItem
 import com.example.rocio.meetandtravel.R
+import com.example.rocio.meetandtravel.R.id.skipButton
+import com.example.rocio.meetandtravel.models.Preferences
+import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.viewcontrollers.fragments.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         return@OnNavigationItemSelectedListener navigateTo(item)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val savedToken = Preferences(this)
+
+        fab.setOnClickListener{
+            view -> startActivity(Intent(view.context, LoginActivity::class.java))
+        }
+        if(savedToken.userToken == null || savedToken.userToken == ""){
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
     }
@@ -32,6 +48,7 @@ class MainActivity : AppCompatActivity() {
                 return EventsFragment()
             }
             R.id.navigation_tickets -> {
+
                 return TicketsFragment()
             }
             R.id.navigation_providers -> {
