@@ -10,10 +10,13 @@ data class User(
         val email:String? = "",
         val telephone:String? = "",
         val dni:String? = "",
-        val birthdate:String? = "") {
+        val birthdate:String? = "",
+        val password:String? = "",
+        @SerializedName("confirm_password")
+        val confirmPassword: String? = "") {
     companion object {
-        fun from(bundle: Bundle) : Event {
-            return Event(
+        fun from(bundle: Bundle) : User {
+            return User(
                     bundle.getInt("id"),
                     bundle.getString("firstname"),
                     bundle.getString("lastname"),

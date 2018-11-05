@@ -51,13 +51,14 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
             return
         }
-            user = response.user!!
-            token = response.token!!
-            val prefs = Preferences(this)
-            prefs.userToken = token
-            prefs.userId = user.id
-            Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id.")
-            startActivity(Intent(this, MainActivity::class.java))
+        user = response.user!!
+        token = response.token!!
+        val prefs = Preferences(this)
+        prefs.userToken = token
+        prefs.userId = user.id
+        Log.d(MeetAndTravelApi.tag, user.toString())
+        Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id.")
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun handleError(anError: ANError?) {

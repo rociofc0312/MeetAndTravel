@@ -13,6 +13,7 @@ class MeetAndTravelApi{
         private val baseUrl = "https://movilesapp-220219.appspot.com/api"
         val allEvents = "$baseUrl/events"
         val userLogin = "$baseUrl/users/auth"
+        val userRegister = "$baseUrl/users"
         val tag = "MeetAndTravel"
 
         fun requestAllEvents(responseHandler: (NetworkResponse?)-> Unit, errorHandler: (ANError?) -> Unit){
@@ -34,6 +35,23 @@ class MeetAndTravelApi{
         fun requestLogin(user:  JSONObject, responseHandler: (NetworkResponse?)-> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.post(MeetAndTravelApi.userLogin)
                     .addJSONObjectBody(user)
+                    .setTag(tag)
+                    .setPriority(Priority.LOW)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun requestUserRegister(user: User, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.post(MeetAndTravelApi.userRegister)
+                    .addBodyParameter(user)
                     .setTag(tag)
                     .setPriority(Priority.LOW)
                     .build()
