@@ -40,6 +40,9 @@ class LoginActivity : AppCompatActivity() {
         skipButton.setOnClickListener {
             view -> startActivity(Intent(view.context, MainActivity::class.java))
         }
+        registerButton.setOnClickListener {
+            view -> startActivity(Intent(view.context, RegisterActivity::class.java))
+        }
     }
 
     private fun handleResponse(response: NetworkResponse?) {

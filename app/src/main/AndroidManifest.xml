@@ -30,10 +30,13 @@
         <activity
             android:name=".viewcontrollers.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".viewcontrollers.activities.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".viewcontrollers.activities.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".viewcontrollers.activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".viewcontrollers.activities.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".viewcontrollers.activities.CreateEvent"></activity>
     </application>
 
 </manifest>

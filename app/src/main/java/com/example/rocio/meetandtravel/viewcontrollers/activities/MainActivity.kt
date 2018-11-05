@@ -21,19 +21,17 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         return@OnNavigationItemSelectedListener navigateTo(item)
     }
+    var prefs: Preferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val savedToken = Preferences(this)
+        prefs = Preferences(this)
 
         fab.setOnClickListener{
             view -> startActivity(Intent(view.context, LoginActivity::class.java))
-        }
-        if(savedToken.userToken == null || savedToken.userToken == ""){
-            startActivity(Intent(this, LoginActivity::class.java))
         }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
@@ -45,17 +43,32 @@ class MainActivity : AppCompatActivity() {
                 return HomeFragment()
             }
             R.id.navigation_myevents-> {
-                return EventsFragment()
+                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else{
+                    return EventsFragment()
+                }
             }
             R.id.navigation_tickets -> {
-
-                return TicketsFragment()
+                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else{
+                    return TicketsFragment()
+                }
             }
             R.id.navigation_providers -> {
-                return ProvidersFragment()
+                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else{
+                    return ProvidersFragment()
+                }
             }
             R.id.navigation_reservations -> {
-                return ReservationFragment()
+                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else{
+                    return ReservationFragment()
+                }
             }
         }
         return HomeFragment()
@@ -67,5 +80,9 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(R.id.attendeeContent, fragmentFor(item))
                 .commit() > 0
+    }
+
+    private fun showView(token: String){
+
     }
 }
