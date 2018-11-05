@@ -10,6 +10,7 @@ import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.models.User
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
+import com.example.rocio.meetandtravel.network.MeetAndTravelApi.Companion.tag
 import com.example.rocio.meetandtravel.network.NetworkResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
@@ -42,22 +43,23 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun handleResponse(response: NetworkResponse?) {
-        if ("Elemento no encontrado".equals(response!!.message, true) || response.user == null) {
+        if ("error".equals(response!!.status, true)) {
             Log.d(MeetAndTravelApi.tag, response.message)
+            Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
             return
-        } else{
-            user = response.user
-            token = response.token!!
-            val savedToken = Preferences(this)
-            savedToken.userToken = token
-            Log.d(MeetAndTravelApi.tag, "Parsed: Found ${savedToken.userToken} token")
-            startActivity(Intent(this, MainActivity::class.java))
         }
+            user = response.user!!
+            token = response.token!!
+            val prefs = Preferences(this)
+            prefs.userToken = token
+            prefs.userId = user.id
+            Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id.")
+            startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun handleError(anError: ANError?) {
-        Log.d(MeetAndTravelApi.tag, "Usuario no registrado")
-        Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
+        Log.d(tag, anError!!.message)
+        //Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
     }
 
 
