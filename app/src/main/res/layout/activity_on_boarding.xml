@@ -9,12 +9,13 @@
 
     <ImageView
         android:id="@+id/logoImageView"
-        android:contentDescription="@string/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_32"
         android:layout_marginStart="@dimen/margin_32"
+        android:layout_marginEnd="@dimen/margin_32"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
         android:src="@drawable/launch_light_image"
         app:layout_constraintBottom_toTopOf="@+id/appText"
         app:layout_constraintEnd_toEndOf="parent"

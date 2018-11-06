@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         item.setChecked(true)
         return supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.attendeeContent, fragmentFor(item))
+                .replace(R.id.mainContent, fragmentFor(item))
                 .commit() > 0
     }
 

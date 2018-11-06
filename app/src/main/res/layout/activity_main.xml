@@ -7,7 +7,7 @@
     tools:context=".viewcontrollers.activities.MainActivity">
 
     <FrameLayout
-        android:id="@+id/attendeeContent"
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_0"
         app:layout_constraintBottom_toTopOf="@+id/navigation"

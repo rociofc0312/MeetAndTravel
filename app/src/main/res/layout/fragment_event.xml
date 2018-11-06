@@ -1,0 +1,244 @@
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    tools:context=".viewcontrollers.fragments.EventFragment">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_layout"
+        tools:context=".viewcontrollers.fragments.EventFragment">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true"
+            tools:context=".viewcontrollers.fragments.EventFragment">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/companyInfoBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_size_30"
+                android:background="@color/colorIcons">
+
+                <TextView
+                    android:id="@+id/companyEventTitleTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:fontFamily="@font/questrial"
+                    android:gravity="center"
+                    android:text="@string/company_title_text"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/companyEventTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:fontFamily="@font/questrial"
+                    android:gravity="center_vertical"
+                    android:text="@string/mock_text"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/companyEventTitleTextView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <com.androidnetworking.widget.ANImageView
+                android:id="@+id/eventImageView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_size_200"
+                app:layout_constraintTop_toBottomOf="@id/companyInfoBar" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/eventMainContent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_size_50"
+                android:background="@drawable/gradient_transparent_black"
+                app:layout_constraintBottom_toBottomOf="@id/eventImageView">
+
+                <TextView
+                    android:id="@+id/nameEventTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:fontFamily="@font/questrial"
+                    android:gravity="center_vertical"
+                    android:text="@string/mock_text"
+                    android:textColor="@color/colorIcons"
+                    android:textSize="@dimen/text_size_14"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/detailEventTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:fontFamily="@font/questrial"
+                android:text="@string/mock_text"
+                app:layout_constraintTop_toBottomOf="@id/eventMainContent" />
+
+            <TableLayout
+                android:id="@+id/eventInfoTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginEnd="@dimen/margin_16"
+                android:stretchColumns="*"
+                app:layout_constraintTop_toBottomOf="@id/detailEventTextView">
+
+                <View
+                    android:layout_height="0.1dp"
+                    android:background="@color/colorPrimaryText" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/start_date_title" />
+
+                    <TextView
+                        android:id="@+id/startDateEventTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/mock_text" />
+
+                    <TextView
+                        android:id="@+id/startHourEventTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/mock_text" />
+                </TableRow>
+
+                <View
+                    android:layout_height="0.1dp"
+                    android:background="@color/colorPrimaryText" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/end_date_text" />
+
+                    <TextView
+                        android:id="@+id/endDateEventTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/mock_text" />
+
+                    <TextView
+                        android:id="@+id/endHourEventTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/mock_text" />
+                </TableRow>
+
+                <View
+                    android:layout_height="0.1dp"
+                    android:background="@color/colorPrimaryText" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/address_title_text" />
+
+                    <TextView
+                        android:id="@+id/addressEventTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_span="2"
+                        android:fontFamily="@font/questrial"
+                        android:padding="@dimen/padding_8"
+                        android:text="@string/mock_text" />
+                </TableRow>
+
+                <View
+                    android:layout_height="0.1dp"
+                    android:background="@color/colorPrimaryText" />
+            </TableLayout>
+
+            <Button
+                android:id="@+id/seeProvidersButton"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:background="@drawable/outline_button"
+                android:fontFamily="@font/questrial"
+                android:text="@string/providers_button_text"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buyTicketsButton"
+                app:layout_constraintTop_toBottomOf="@id/eventInfoTable" />
+
+            <Button
+                android:id="@+id/buyTicketsButton"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:background="@drawable/main_accent_button"
+                android:fontFamily="@font/questrial"
+                android:text="@string/buy_button_text"
+                android:textColor="@color/colorIcons"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/seeProvidersButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventInfoTable" />
+        </android.support.constraint.ConstraintLayout>
+    </FrameLayout>
+</ScrollView>
+

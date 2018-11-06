@@ -62,8 +62,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun handleError(anError: ANError?) {
-        Log.d(tag, anError!!.message)
-        //Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
+        val jsonError = JSONObject(anError!!.errorBody)
+        Log.d(tag, jsonError.getString("message"))
+        Toast.makeText(this, jsonError.getString("message"), Toast.LENGTH_SHORT).show()
     }
 
 
