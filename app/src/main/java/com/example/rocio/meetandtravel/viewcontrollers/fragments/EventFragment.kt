@@ -28,10 +28,24 @@ class EventFragment : Fragment() {
             setErrorImageResId(R.mipmap.ic_launcher)
             setImageUrl(event!!.eventImage)
         }
+        view.startDateEventTextView.text = event!!.startDate
+        view.startHourEventTextView.text = event!!.startHour
+        view.endDateEventTextView.text = event!!.endDate
+        view.endHourEventTextView.text = event!!.endHour
         view.companyEventTextView.text = event!!.description
         view.nameEventTextView.text = event!!.name
         view.detailEventTextView.text = event!!.organizedBy
         view.addressEventTextView.text = event!!.location
+
+        view.seeProvidersButton.setOnClickListener{
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            val providersFragment = ProvidersFragment()
+            providersFragment.arguments = event!!.toBundle()
+            Log.d(tag, arguments.toString())
+            fragmentTransaction.replace(R.id.mainContent, providersFragment)
+            fragmentTransaction.addToBackStack("Providers")
+            fragmentTransaction.commit()
+        }
 
         return view
     }

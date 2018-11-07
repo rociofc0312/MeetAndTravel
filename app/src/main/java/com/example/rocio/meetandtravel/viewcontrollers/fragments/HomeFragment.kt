@@ -20,6 +20,7 @@ import com.example.rocio.meetandtravel.viewcontrollers.adapters.AllEventsAdapter
 import kotlinx.android.synthetic.main.fragment_events.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import java.text.SimpleDateFormat
 
 class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
 

@@ -5,16 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.MenuItem
 import com.example.rocio.meetandtravel.R
-import com.example.rocio.meetandtravel.R.id.skipButton
 import com.example.rocio.meetandtravel.models.Preferences
-import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.viewcontrollers.fragments.*
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 if(prefs!!.userToken == null || prefs!!.userToken == ""){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else{
-                    return ProvidersFragment()
+                    return MyProvidersFragment()
                 }
             }
             R.id.navigation_reservations -> {

@@ -2,18 +2,22 @@ package com.example.rocio.meetandtravel.viewcontrollers.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Event
+import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.viewcontrollers.fragments.EventFragment
 import kotlinx.android.synthetic.main.item_event.view.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
@@ -55,20 +59,7 @@ class AllEventsAdapter(private val onEventClickListener: OnEventClickListener, v
             locationEventTextView.text = event.location
             eventLayout.setOnClickListener {
                 onEventClickListener.onClick(event)
-                /*
-                val fragmentManager = supportFragm
-                val fragmentTransaction = fragmentManager.beginTransaction()
-                val eventFragment = EventFragment()
-                fragmentTransaction.replace(R.id.mainContent, eventFragment)
-                fragmentTransaction.commit()*/
             }
         }
-
-        private fun toSimpleString(date: String?) : String {
-            val format = SimpleDateFormat("yyyy-MM-dd")
-            val dateF = format.parse(date)
-            return dateF.toString()
-        }
-
     }
 }
