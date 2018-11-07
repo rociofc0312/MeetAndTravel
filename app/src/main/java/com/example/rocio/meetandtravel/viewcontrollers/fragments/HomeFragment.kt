@@ -21,9 +21,11 @@ import kotlinx.android.synthetic.main.fragment_events.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.text.SimpleDateFormat
+import com.example.rocio.meetandtravel.models.Preferences
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEvent
 
 class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
-
+    var prefs: Preferences? = null
     override fun onClick(event: Event) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         val eventFragment = EventFragment()
@@ -40,9 +42,19 @@ class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.fab.setOnClickListener{
-            view -> startActivity(Intent(view.context, LoginActivity::class.java))
+
+//        view.fab.setOnClickListener{
+//            view -> startActivity(Intent(view.context, LoginActivity::class.java))
+//        }
+        view.fab.setOnClickListener {
+//            if (prefs!!.userToken == null || prefs!!.userToken == "") {
+//                view -> startActivity(Intent(view.context, LoginActivity::class.java))
+            view -> startActivity(Intent(view.context, CreateEvent::class.java))
+//            } else {
+
+//            }
         }
         allEventsRecyclerView = view.eventsRecyclerView
         allEventsAdapter = AllEventsAdapter(this, events, view.context)
