@@ -49,9 +49,9 @@ class MeetAndTravelApi{
                     })
         }
 
-        fun requestUserRegister(user: User, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+        fun requestUserRegister(user: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.post(MeetAndTravelApi.userRegister)
-                    .addBodyParameter(user)
+                    .addJSONObjectBody(user)
                     .setTag(tag)
                     .setPriority(Priority.LOW)
                     .build()

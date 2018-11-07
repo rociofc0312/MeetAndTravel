@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         prefs = Preferences(this)
 
-        fab.setOnClickListener{
-            view -> startActivity(Intent(view.context, LoginActivity::class.java))
-        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
     }

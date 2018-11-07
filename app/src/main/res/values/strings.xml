@@ -39,4 +39,5 @@
     <string name="title_tickets">Tickets</string>
     <string name="reservations_title">Reservas</string>
     <string name="profile_title">Perfil</string>
+    <string name="confirm_password_text">Confirmar contraseña</string>
 </resources>

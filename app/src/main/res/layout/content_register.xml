@@ -117,6 +117,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/birthdate_text"
         android:inputType="date"
+        android:gravity="center_vertical"
         android:backgroundTint="@color/colorAccent"
         android:fontFamily="@font/questrial"
         android:textSize="@dimen/text_size_14"
@@ -129,7 +130,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dniEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/dniEditText" >
+    </EditText>
+
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -145,14 +148,34 @@
         android:layout_marginTop="@dimen/margin_8"
         android:drawableStart="@drawable/ic_lock_primary_24dp"
         android:drawablePadding="@dimen/padding_8"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/passwordConfirmEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthdateEditText" />
 
+    <EditText
+        android:id="@+id/passwordConfirmEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/confirm_password_text"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/colorAccent"
+        android:fontFamily="@font/questrial"
+        android:textSize="@dimen/text_size_14"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:layout_marginTop="@dimen/margin_8"
+        android:drawableStart="@drawable/ic_lock_primary_24dp"
+        android:drawablePadding="@dimen/padding_8"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register_text"
@@ -166,6 +189,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEditText" />
 
 </android.support.constraint.ConstraintLayout>

@@ -18,8 +18,13 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 
-class AllEventsAdapter(var events: List<Event>, val context: Context):
+class AllEventsAdapter(private val onEventClickListener: OnEventClickListener, var events: List<Event>, val context: Context):
         RecyclerView.Adapter<AllEventsAdapter.ViewHolder>() {
+
+    interface OnEventClickListener {
+        fun onClick(event: Event)
+    }
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_event, p0, false))
     }
@@ -33,7 +38,7 @@ class AllEventsAdapter(var events: List<Event>, val context: Context):
         holder.updateFrom(event)
     }
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val eventImageView = view.eventImageView
         val nameEventTextView = view.nameEventTextView
         val dateEventTextView = view.dateEventTextView
@@ -49,6 +54,7 @@ class AllEventsAdapter(var events: List<Event>, val context: Context):
             dateEventTextView.text = event.startDate
             locationEventTextView.text = event.location
             eventLayout.setOnClickListener {
+                onEventClickListener.onClick(event)
                 /*
                 val fragmentManager = supportFragm
                 val fragmentTransaction = fragmentManager.beginTransaction()
