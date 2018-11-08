@@ -54,7 +54,7 @@ class CreateEvent : AppCompatActivity() {
 
     private fun handleResponse(response: NetworkResponse?) {
         Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, CreateEvent::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 
     private fun handleError(anError: ANError?) {

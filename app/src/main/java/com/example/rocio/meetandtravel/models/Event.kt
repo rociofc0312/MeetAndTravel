@@ -20,6 +20,8 @@ data class Event(
         val location:String? = "",
         @SerializedName("event_image")
         val eventImage:String? = "",
+        @SerializedName("file")
+        val file:String? = "",
         @SerializedName("user_id")
         val userId:String? = "") {
         companion object {
@@ -35,6 +37,7 @@ data class Event(
                     bundle.getString("end_hour"),
                     bundle.getString("location"),
                     bundle.getString("event_image"),
+                    bundle.getString("file"),
                     bundle.getString("user_id")
             )
         }
@@ -51,7 +54,8 @@ data class Event(
             putString("start_hour", startHour)
             putString("end_hour", endHour)
             putString("location", location)
-            putString("file", eventImage)
+            putString("event_image", eventImage)
+            putString("file", file)
             putString("user_id", userId)
         }
         return bundle

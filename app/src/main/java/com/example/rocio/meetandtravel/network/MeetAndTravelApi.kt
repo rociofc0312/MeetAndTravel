@@ -56,7 +56,6 @@ class MeetAndTravelApi{
                     .addJSONObjectBody(user)
                     .setTag(tag)
                     .setPriority(Priority.LOW)
-                    .addHeaders("token", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE2MDI5NjksImV4cCI6MTU0MTYzMTc2OX0.mRYeB3Llr9gyhGeupECkSE0_PDb2-PrzkbHT0BE5qc8")
                     .build()
                     .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
                         override fun onResponse(response: NetworkResponse?) {
@@ -68,22 +67,22 @@ class MeetAndTravelApi{
                         }
                     })
         }
-        fun requestEventRegister(event: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
-            AndroidNetworking.post(MeetAndTravelApi.eventRegister)
-                    .addJSONObjectBody(event)
-                    .setTag(tag)
-                    .setPriority(Priority.LOW)
-                    .build()
-                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
-                        override fun onResponse(response: NetworkResponse?) {
-                            responseHandler(response)
-                        }
+        fun requestEventRegister(event: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) =
+                AndroidNetworking.post(MeetAndTravelApi.eventRegister)
+                        .addJSONObjectBody(event)
+                        .addHeaders("Authorization", String.format("Bearer %s", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE2NTA3OTksImV4cCI6MTU0MTY3OTU5OX0.lMOsYlXjPPPWUiDOaxk97eECkB-O0a6UqBczXk_xJj0"))
+                        .setTag(tag)
+                        .setPriority(Priority.LOW)
+                        .build()
+                        .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
+                            override fun onResponse(response: NetworkResponse?) {
+                                responseHandler(response)
+                            }
 
-                        override fun onError(anError: ANError?) {
-                            errorHandler(anError)
-                        }
-                    })
-        }
+                            override fun onError(anError: ANError?) {
+                                errorHandler(anError)
+                            }
+                        })
         fun requestAllProviders(event_id: String, responseHandler: (NetworkResponse?)-> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.get(MeetAndTravelApi.allProviders)
                     .addPathParameter("event_id", event_id)
