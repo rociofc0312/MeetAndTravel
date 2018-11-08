@@ -40,4 +40,5 @@
     <string name="reservations_title">Reservas</string>
     <string name="profile_title">Perfil</string>
     <string name="confirm_password_text">Confirmar contraseña</string>
+    <string name="eventos_title">Eventos</string>
 </resources>

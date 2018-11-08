@@ -23,47 +23,61 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         prefs = Preferences(this)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
     }
 
-    private fun fragmentFor(item: MenuItem): Fragment{
-        when(item.itemId){
-            R.id.navigation_home-> {
+    private fun fragmentFor(item: MenuItem): Fragment {
+        when (item.itemId) {
+            R.id.navigation_home -> {
                 return HomeFragment()
             }
-            R.id.navigation_myevents-> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+            R.id.navigation_myevents -> {
+                if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
-                } else{
+                } else {
                     return EventsFragment()
                 }
             }
             R.id.navigation_tickets -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
-                } else{
+                } else {
                     return TicketsFragment()
                 }
             }
             R.id.navigation_providers -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
-                } else{
+                } else {
                     return MyProvidersFragment()
                 }
             }
             R.id.navigation_reservations -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
+                if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
-                } else{
+                } else {
                     return ReservationFragment()
                 }
             }
         }
         return HomeFragment()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            android.R.id.home -> {
+                if (supportFragmentManager.backStackEntryCount >= 1){
+                    supportFragmentManager.popBackStack()
+                }
+            }
+        }
+        return true
     }
 
     private fun navigateTo(item: MenuItem): Boolean {
@@ -74,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                 .commit() > 0
     }
 
-    private fun showView(token: String){
+    private fun showView(token: String) {
 
     }
 }
