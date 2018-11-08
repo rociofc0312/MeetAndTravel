@@ -5,71 +5,62 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.app.ActionBar
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
+import com.androidnetworking.error.ANError
 import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
+import com.example.rocio.meetandtravel.network.NetworkResponse
 import com.example.rocio.meetandtravel.viewcontrollers.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_event.*
+import kotlinx.android.synthetic.main.content_register.*
+import org.json.JSONObject
 
 class CreateEvent : AppCompatActivity() {
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        return@OnNavigationItemSelectedListener navigateTo(item)
-    }
 
-    var prefs: Preferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
-
-        prefs = Preferences(this)
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-//        navigation.selectedItemId = R.id.navigation_home
+        setupActionBar()
+        guardarButton.setOnClickListener{
+            MeetAndTravelApi.requestEventRegister(buildEvent(), { response -> handleResponse(response) }, { error -> handleError(error)})
+        }
         Log.d("Debug","Evento Creado")
     }
 
-    private fun fragmentFor(item: MenuItem): Fragment {
-        when(item.itemId){
-            R.id.navigation_home-> {
-                return HomeFragment()
-            }
-            R.id.navigation_myevents-> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
-                    startActivity(Intent(this, LoginActivity::class.java))
-                } else{
-                    return EventsFragment()
-                }
-            }
-            R.id.navigation_tickets -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
-                    startActivity(Intent(this, LoginActivity::class.java))
-                } else{
-                    return TicketsFragment()
-                }
-            }
-            R.id.navigation_providers -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
-                    startActivity(Intent(this, LoginActivity::class.java))
-                } else{
-                    return ProvidersFragment()
-                }
-            }
-            R.id.navigation_reservations -> {
-                if(prefs!!.userToken == null || prefs!!.userToken == ""){
-                    startActivity(Intent(this, LoginActivity::class.java))
-                } else{
-                    return ReservationFragment()
-                }
-            }
-        }
-        return HomeFragment()
+    fun setupActionBar() {
+        supportActionBar?.title = "Registrar Evento"
     }
-    private fun navigateTo(item: MenuItem): Boolean {
-        item.setChecked(true)
-        return supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.mainContent, fragmentFor(item))
-                .commit() > 0
+
+    private fun buildEvent(): JSONObject {
+        var url: String = "https://storage.googleapis.com/rociomovilesapp2/semanaEmprendimiento.jpg1541554615846"
+        val jsonObject = JSONObject()
+        jsonObject.put("name", nombreEditText.text)
+        jsonObject.put("description", descripcionEditText.text)
+        jsonObject.put("start_date", fechaInicioEditText.text)
+        jsonObject.put("end_date",  fechaFinEditText.text)
+        jsonObject.put("start_hour", horaEditText.text)
+        jsonObject.put("end_hour", horaEditText.text)
+        jsonObject.put("location", lugarEditText.text)
+        jsonObject.put("organized_by", empresaEditText.text)
+        jsonObject.put("file", url)
+        Log.d(MeetAndTravelApi.tag, jsonObject.toString())
+        return jsonObject
     }
+
+    private fun handleResponse(response: NetworkResponse?) {
+        Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, CreateEvent::class.java))
+    }
+
+    private fun handleError(anError: ANError?) {
+        val jsonError = JSONObject(anError!!.errorBody)
+        Log.d(MeetAndTravelApi.tag, jsonError.getString("message"))
+        Toast.makeText(this, jsonError.getString("message"), Toast.LENGTH_SHORT).show()
+    }
+
 }

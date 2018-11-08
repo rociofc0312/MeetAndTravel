@@ -51,7 +51,7 @@ data class Event(
             putString("start_hour", startHour)
             putString("end_hour", endHour)
             putString("location", location)
-            putString("event_image", eventImage)
+            putString("file", eventImage)
             putString("user_id", userId)
         }
         return bundle

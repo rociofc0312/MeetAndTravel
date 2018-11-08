@@ -36,7 +36,7 @@
         <activity
             android:name=".viewcontrollers.activities.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".viewcontrollers.activities.CreateEvent"></activity>
+        <activity android:name=".viewcontrollers.activities.CreateEvent" android:parentActivityName=".viewcontrollers.activities.MainActivity"></activity>
     </application>
 
 </manifest>

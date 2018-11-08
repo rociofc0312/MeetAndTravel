@@ -13,5 +13,6 @@ class NetworkResponse{
     val providers: ArrayList<Provider>? = ArrayList()
 
     val user: User? = null
+    val event: Event? = null
     val token: String? = null
 }
