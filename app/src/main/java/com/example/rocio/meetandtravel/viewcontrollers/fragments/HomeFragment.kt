@@ -3,7 +3,6 @@ package com.example.rocio.meetandtravel.viewcontrollers.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -16,14 +15,10 @@ import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Event
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
-import com.example.rocio.meetandtravel.viewcontrollers.activities.LoginActivity
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.AllEventsAdapter
-import kotlinx.android.synthetic.main.fragment_events.view.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.text.SimpleDateFormat
 import com.example.rocio.meetandtravel.models.Preferences
-import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEvent
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEventActivity
 
 class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
     var prefs: Preferences? = null
@@ -40,6 +35,7 @@ class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
     private lateinit var allEventsLayoutManager: RecyclerView.LayoutManager
 
     private var events = ArrayList<Event>()
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.let {
@@ -58,7 +54,7 @@ class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
         view.fab.setOnClickListener {
 //            if (prefs!!.userToken == null || prefs!!.userToken == "") {
 //                view -> startActivity(Intent(view.context, LoginActivity::class.java))
-            view -> startActivity(Intent(view.context, CreateEvent::class.java))
+            view -> startActivity(Intent(view.context, CreateEventActivity::class.java))
 //            } else {
 
 //            }

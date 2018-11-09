@@ -60,7 +60,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_size_30"
+            android:layout_height="@dimen/dime_size_35"
             android:id="@+id/eventInfoContent"
             android:background="@drawable/border_bottom"
             app:layout_constraintTop_toBottomOf="@id/eventImageView">

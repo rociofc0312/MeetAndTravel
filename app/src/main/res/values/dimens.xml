@@ -25,4 +25,6 @@
     <dimen name="item_size_200">200dp</dimen>
     <dimen name="item_size_50">50dp</dimen>
     <dimen name="item_size_30">30dp</dimen>
+    <dimen name="dime_size_35">35dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
 </resources>

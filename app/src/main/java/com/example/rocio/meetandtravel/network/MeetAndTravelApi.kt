@@ -15,6 +15,7 @@ class MeetAndTravelApi{
         val allProviders = "$baseUrl/events/{event_id}/providers"
         val userLogin = "$baseUrl/users/auth"
         val userRegister = "$baseUrl/users"
+        val myTickets = "$baseUrl/tickets/purchases"
         val tag = "MeetAndTravel"
 
         fun requestAllEvents(responseHandler: (NetworkResponse?)-> Unit, errorHandler: (ANError?) -> Unit){
@@ -73,6 +74,23 @@ class MeetAndTravelApi{
                     .setTag(tag)
                     .build()
                     .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun requestMyTickets(token: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
+            AndroidNetworking.get(MeetAndTravelApi.myTickets)
+                    .addHeaders("Authorization", token)
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
                         override fun onResponse(response: NetworkResponse?) {
                             responseHandler(response)
                         }

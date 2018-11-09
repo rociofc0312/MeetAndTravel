@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     return TicketsFragment()
                 }
             }
-            R.id.navigation_providers -> {
+            R.id.navigation_profile -> {
                 if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
