@@ -7,6 +7,7 @@
     <string name="skip_text">Saltar</string>
     <string name="login_text">INICIAR SESIÓN</string>
     <string name="register_text">REGISTRAR</string>
+    <string name="register_event">REGISTRAR EVENTO</string>
     <string name="name_text">Nombre completo</string>
     <string name="lastname_text">Apellido completo</string>
     <string name="phone_text">Teléfono</string>

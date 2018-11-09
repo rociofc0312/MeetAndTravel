@@ -34,9 +34,7 @@ class LoginActivity : AppCompatActivity() {
                 jsonObject.put("password", passwordEditText.text)
                 MeetAndTravelApi.requestLogin(jsonObject, { response -> handleResponse(response) }, { error -> handleError(error)})
             }
-
         }
-
         skipButton.setOnClickListener {
             view -> startActivity(Intent(view.context, MainActivity::class.java))
         }

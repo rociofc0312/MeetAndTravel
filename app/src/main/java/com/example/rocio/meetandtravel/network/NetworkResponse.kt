@@ -15,5 +15,6 @@ class NetworkResponse{
     val tickets: ArrayList<Ticket>? = ArrayList()
 
     val user: User? = null
+    val event: Event? = null
     val token: String? = null
 }
