@@ -35,7 +35,7 @@ class CreateEvent : AppCompatActivity() {
         guardarButton.setOnClickListener{
             val path = getPath(filePath)
             val file = File(path)
-            MeetAndTravelApi.requestEventRegister(file, { response -> handleResponse(response) }, { error -> handleError(error)})
+            MeetAndTravelApi.requestEventRegister(file,buildEvent(), { response -> handleResponse(response) }, { error -> handleError(error)})
         }
 
         requestStoragePermission()
@@ -51,7 +51,6 @@ class CreateEvent : AppCompatActivity() {
     }
 
     private fun buildEvent(): JSONObject {
-        val path = getPath(filePath)
         val jsonObject = JSONObject()
         jsonObject.put("name", nombreEditText.text)
         jsonObject.put("description", descripcionEditText.text)
@@ -61,7 +60,6 @@ class CreateEvent : AppCompatActivity() {
         jsonObject.put("end_hour", horaEditText.text)
         jsonObject.put("location", lugarEditText.text)
         jsonObject.put("organized_by", empresaEditText.text)
-        jsonObject.put("file", path)
         Log.d(MeetAndTravelApi.tag, jsonObject.toString())
         return jsonObject
     }
