@@ -20,7 +20,7 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
-        android:text="SEMANA INTERNACIONAL DEL EMPRENDIMIENTO 2018" />
+        android:text="Selvamonos" />
 
     <EditText
         android:id="@+id/empresaEditText"
@@ -63,7 +63,7 @@
         android:ems="10"
         android:hint="Fecha Inicio"
         android:inputType="textPersonName"
-        android:text="2018-11-17" />
+        android:text="11-09-2018" />
 
     <EditText
         android:id="@+id/fechaFinEditText"
@@ -78,7 +78,7 @@
         android:ems="10"
         android:hint="Fecha Fin"
         android:inputType="textPersonName"
-        android:text="2018-11-17" />
+        android:text="11-09-2018" />
 
     <EditText
         android:id="@+id/lugarEditText"
@@ -106,8 +106,22 @@
         android:ems="10"
         android:hint="Hora"
         android:inputType="textPersonName"
-        android:text="16:30:00" />
+        android:text="09:30" />
 
+
+
+        <Button
+            android:id="@+id/buttonChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select" />
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:hint="Name For Image"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     <Button
         android:id="@+id/guardarButton"
         android:layout_width="wrap_content"
@@ -117,6 +131,10 @@
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="38dp"
         android:text="Guardar" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </RelativeLayout>

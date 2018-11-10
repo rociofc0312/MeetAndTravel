@@ -18,7 +18,7 @@ import com.example.rocio.meetandtravel.network.NetworkResponse
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.AllEventsAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.example.rocio.meetandtravel.models.Preferences
-import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEventActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEvent
 
 class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
     var prefs: Preferences? = null
@@ -54,7 +54,7 @@ class HomeFragment : Fragment(), AllEventsAdapter.OnEventClickListener {
         view.fab.setOnClickListener {
 //            if (prefs!!.userToken == null || prefs!!.userToken == "") {
 //                view -> startActivity(Intent(view.context, LoginActivity::class.java))
-            view -> startActivity(Intent(view.context, CreateEventActivity::class.java))
+            view -> startActivity(Intent(view.context, CreateEvent::class.java))
 //            } else {
 
 //            }
