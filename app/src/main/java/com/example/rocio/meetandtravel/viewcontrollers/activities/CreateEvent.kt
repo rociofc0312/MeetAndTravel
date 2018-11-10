@@ -14,6 +14,7 @@ import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
+import com.example.rocio.meetandtravel.network.TestResponse
 import com.example.rocio.meetandtravel.viewcontrollers.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_event.*
@@ -94,7 +95,7 @@ class CreateEvent : AppCompatActivity() {
         return jsonObject
     }
 
-    private fun handleResponse(response: NetworkResponse?) {
+    private fun handleResponse(response: TestResponse?) {
         Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, LoginActivity::class.java))
     }

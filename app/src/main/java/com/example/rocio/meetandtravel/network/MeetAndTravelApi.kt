@@ -71,12 +71,13 @@ class MeetAndTravelApi{
                         }
                     })
         }
-        fun requestEventRegister(file: File, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
+        fun requestEventRegister(file: File, responseHandler: (TestResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.upload(MeetAndTravelApi.eventRegister)
                     .addPathParameter("user_id", "1")
                     .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE4MDE5MDQsImV4cCI6MTU0MTgzMDcwNH0.rLvvnc-kaDivAI4a5jbn2PlzFyOmVQ5Ef4267crPLrQ")
+                    //.addHeaders("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJtaWd1ZWxsQGdtYWlsLmNvbSIsInRpbWUiOjE1MzgwNDk3ODR9.k1eTWLSTSoNak0uX33I7GBddaoyS5d24ETgVuNYMi1s")
                     .addMultipartFile("file",file)
-                    .addMultipartParameter("name", "hhh")
+                    .addMultipartParameter("name", "Evento X")
                     .addMultipartParameter("description", "TEST")
                     .addMultipartParameter("start_date", "2018-11-09")
                     .addMultipartParameter("end_date",  "2018-11-09")
@@ -87,11 +88,10 @@ class MeetAndTravelApi{
                     .setPriority(Priority.MEDIUM)
                     .setTag(tag)
                     .build()
-                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
-                        override fun onResponse(response: NetworkResponse?) {
+                    .getAsObject(TestResponse::class.java, object : ParsedRequestListener<TestResponse>{
+                        override fun onResponse(response: TestResponse?) {
                             responseHandler(response)
                         }
-
                         override fun onError(anError: ANError?) {
                             errorHandler(anError)
                         }
