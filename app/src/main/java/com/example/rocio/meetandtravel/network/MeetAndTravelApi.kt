@@ -3,10 +3,7 @@ package com.example.rocio.meetandtravel.network
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.JSONArrayRequestListener
 import com.androidnetworking.interfaces.ParsedRequestListener
-import com.example.rocio.meetandtravel.models.User
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
@@ -74,10 +71,9 @@ class MeetAndTravelApi{
         fun requestEventRegister(file: File, responseHandler: (TestResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.upload(MeetAndTravelApi.eventRegister)
                     .addPathParameter("user_id", "1")
-                    .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE4MDE5MDQsImV4cCI6MTU0MTgzMDcwNH0.rLvvnc-kaDivAI4a5jbn2PlzFyOmVQ5Ef4267crPLrQ")
-                    //.addHeaders("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJtaWd1ZWxsQGdtYWlsLmNvbSIsInRpbWUiOjE1MzgwNDk3ODR9.k1eTWLSTSoNak0uX33I7GBddaoyS5d24ETgVuNYMi1s")
+                    .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE4MzEzNTgsImV4cCI6MTU0MTg2MDE1OH0.TOVDlqg3qGtzMHJ99DiM32zD4R5UbGzAyw4nngzvzC0")
                     .addMultipartFile("file",file)
-                    .addMultipartParameter("name", "Evento X")
+                    .addMultipartParameter("name", "Evento - AL Fin Subio")
                     .addMultipartParameter("description", "TEST")
                     .addMultipartParameter("start_date", "2018-11-09")
                     .addMultipartParameter("end_date",  "2018-11-09")

@@ -110,31 +110,6 @@
 
 
     <Button
-        android:id="@+id/buttonChoose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lugarEditText"
-        android:layout_alignBottom="@+id/editTextName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="1dp"
-        android:text="Select" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="204dp"
-        android:layout_height="45dp"
-        android:layout_below="@+id/lugarEditText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="94dp"
-        android:layout_weight="1"
-        android:hint="Name For Image" />
-
-    <Button
         android:id="@+id/guardarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,5 +118,16 @@
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="23dp"
         android:text="Guardar" />
+
+    <Button
+        android:id="@+id/buttonChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="98dp"
+        android:text="Subir Imagen" />
+
 
 </RelativeLayout>
