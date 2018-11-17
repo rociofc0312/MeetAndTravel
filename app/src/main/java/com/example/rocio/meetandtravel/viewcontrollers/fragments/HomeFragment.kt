@@ -20,6 +20,7 @@ import android.support.v7.widget.SearchView
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.EventsAdapter
 
 
+
 class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
     lateinit var on : EventsAdapter.OnEventClickListener
     override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
