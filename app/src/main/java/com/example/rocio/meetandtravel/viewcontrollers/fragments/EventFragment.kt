@@ -48,6 +48,7 @@ class EventFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+
         return view
     }
 
@@ -56,5 +57,7 @@ class EventFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.let {
             it.title = "Detalle Evento"
         }
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

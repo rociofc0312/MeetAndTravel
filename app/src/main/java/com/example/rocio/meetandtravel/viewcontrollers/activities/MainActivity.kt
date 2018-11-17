@@ -24,8 +24,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        if (supportActionBar?.isShowing!!){
+            supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            supportActionBar?.setDisplayShowHomeEnabled(false)
+        }
         prefs = Preferences(this)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)

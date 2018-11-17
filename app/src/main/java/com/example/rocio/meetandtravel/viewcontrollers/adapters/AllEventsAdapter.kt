@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Event
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
@@ -23,7 +25,15 @@ import java.time.format.FormatStyle
 import java.util.*
 
 class AllEventsAdapter(private val onEventClickListener: OnEventClickListener, var events: List<Event>, val context: Context):
-        RecyclerView.Adapter<AllEventsAdapter.ViewHolder>() {
+        RecyclerView.Adapter<AllEventsAdapter.ViewHolder>(), Filterable {
+    lateinit var eventFilter : FilterEvents
+    var eventsFiltered: List<Event> = events
+    override fun getFilter(): Filter {
+
+            eventFilter = FilterEvents()
+
+        return eventFilter
+    }
 
     interface OnEventClickListener {
         fun onClick(event: Event)
@@ -34,11 +44,11 @@ class AllEventsAdapter(private val onEventClickListener: OnEventClickListener, v
     }
 
     override fun getItemCount(): Int {
-        return events.size
+        return eventsFiltered.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val event = events.get(position)
+        val event = eventsFiltered.get(position)
         holder.updateFrom(event)
     }
 
@@ -61,5 +71,37 @@ class AllEventsAdapter(private val onEventClickListener: OnEventClickListener, v
                 onEventClickListener.onClick(event)
             }
         }
+    }
+
+    inner class FilterEvents: Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filterResults = Filter.FilterResults()
+            if (constraint != null && constraint.isNotEmpty()) {
+                val temp = ArrayList<Event>()
+                for (event in events) {
+                    if (event.name!!.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        temp.add(event)
+                        Log.d("Filtrado", event.name)
+                    }
+                }
+                Log.d("Filtro", constraint.toString())
+
+                eventsFiltered = temp
+            } else {
+
+                eventsFiltered = events
+            }
+            filterResults.count = eventsFiltered.size
+            filterResults.values = eventsFiltered
+            return filterResults
+
+        }
+
+        @SuppressWarnings("unchecked")
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            eventsFiltered = results!!.values as List<Event>
+            notifyDataSetChanged()
+        }
+
     }
 }
