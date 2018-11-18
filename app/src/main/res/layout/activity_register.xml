@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".viewcontrollers.activities.RegisterActivity"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/gradient_primary_back">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                     android:id="@+id/cancelButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_close_black_32dp"
+                    android:background="@drawable/ic_close_accent_24dp"
                     android:textSize="@dimen/text_size_12"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

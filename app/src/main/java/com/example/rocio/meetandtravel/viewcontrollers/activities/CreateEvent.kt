@@ -19,12 +19,15 @@ import android.support.v4.content.ContextCompat
 import java.io.File
 import android.net.Uri
 import android.Manifest
+import com.example.rocio.meetandtravel.models.Preferences
+import com.example.rocio.meetandtravel.network.NetworkResponse
 
 
 class CreateEvent : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST = 1
     private val STORAGE_PERMISSION_CODE = 123
     private lateinit var filePath: Uri
+    var prefs: Preferences? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,13 +35,15 @@ class CreateEvent : AppCompatActivity() {
         setContentView(R.layout.activity_create_event)
         setupActionBar()
 
+        prefs = Preferences(this)
+
+        requestStoragePermission()
+
         guardarButton.setOnClickListener{
             val path = getPath(filePath)
             val file = File(path)
-            MeetAndTravelApi.requestEventRegister(file,buildEvent(), { response -> handleResponse(response) }, { error -> handleError(error)})
+            MeetAndTravelApi.requestEventRegister(prefs!!.userToken!!, prefs!!.userId.toString(), file, buildEvent(), { response -> handleEventResponse(response) }, { error -> handleEventError(error)})
         }
-
-        requestStoragePermission()
 
         buttonChoose.setOnClickListener{
             showFileChooser()
@@ -52,24 +57,23 @@ class CreateEvent : AppCompatActivity() {
 
     private fun buildEvent(): JSONObject {
         val jsonObject = JSONObject()
-        jsonObject.put("name", nombreEditText.text)
-        jsonObject.put("description", descripcionEditText.text)
-        jsonObject.put("start_date", fechaInicioEditText.text)
-        jsonObject.put("end_date",  fechaFinEditText.text)
-        jsonObject.put("start_hour", horaEditText.text)
-        jsonObject.put("end_hour", horaEditText.text)
-        jsonObject.put("location", lugarEditText.text)
-        jsonObject.put("organized_by", empresaEditText.text)
+        jsonObject.put("name", nameEditText.text)
+        jsonObject.put("description", descriptionEditText.text)
+        jsonObject.put("start_date", startDateEditText.text)
+        jsonObject.put("end_date",  endDateEditText.text)
+        jsonObject.put("start_hour", startHourEditText.text)
+        jsonObject.put("end_hour", endHourEditText.text)
+        jsonObject.put("location", locationEditText.text)
+        jsonObject.put("organized_by", companyEditText.text)
         Log.d(MeetAndTravelApi.tag, jsonObject.toString())
         return jsonObject
     }
 
-    private fun handleResponse(response: TestResponse?) {
+    private fun handleEventResponse(response: NetworkResponse?) {
         Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, LoginActivity::class.java))
     }
 
-    private fun handleError(anError: ANError?) {
+    private fun handleEventError(anError: ANError?) {
         val jsonError = JSONObject(anError!!.errorBody)
         Log.d(MeetAndTravelApi.tag, jsonError.getString("message"))
         Toast.makeText(this, jsonError.getString("message"), Toast.LENGTH_SHORT).show()
@@ -85,6 +89,7 @@ class CreateEvent : AppCompatActivity() {
     public override fun onActivityResult(requestCode: Int, result: Int, data: Intent?) {
         super.onActivityResult(requestCode, result, data)
         filePath = data!!.data
+        imageNameEditText.setText(File(getPath(filePath)).name)
     }
 
     private fun getPath(uri: Uri): String {

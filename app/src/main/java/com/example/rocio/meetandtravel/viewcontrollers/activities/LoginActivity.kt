@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     val message = "Debe completar los campos solicitados."
     private lateinit var user: User
     private lateinit var token: String
+    private var time: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,18 +45,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun handleResponse(response: NetworkResponse?) {
-        if ("error".equals(response!!.status, true)) {
-            Log.d(MeetAndTravelApi.tag, response.message)
-            Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
-            return
-        }
-        user = response.user!!
+        user = response!!.user!!
         token = response.token!!
+        time = System.currentTimeMillis()
         val prefs = Preferences(this)
         prefs.userToken = token
         prefs.userId = user.id
+        prefs.time = time
         Log.d(MeetAndTravelApi.tag, user.toString())
-        Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id.")
+        Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id and time ${prefs.time}.")
         startActivity(Intent(this, MainActivity::class.java))
     }
 

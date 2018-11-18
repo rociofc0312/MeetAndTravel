@@ -1,5 +1,6 @@
 package com.example.rocio.meetandtravel.viewcontrollers.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -17,12 +18,23 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEvent
 import android.support.v7.widget.SearchView
+import com.example.rocio.meetandtravel.viewcontrollers.activities.LoginActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.RegisterActivity
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.EventsAdapter
-
+import org.json.JSONObject
 
 
 class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
     lateinit var on : EventsAdapter.OnEventClickListener
+    private val INVALID_LOGIN = 28800000
+    private lateinit var allEventsRecyclerView: RecyclerView
+    private lateinit var allEventsAdapter: EventsAdapter
+    private lateinit var allEventsLayoutManager: RecyclerView.LayoutManager
+
+    private var events = ArrayList<Event>()
+    var prefs: Preferences? = null
+
+
     override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
         return true
     }
@@ -51,8 +63,6 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
         allEventsRecyclerView.setLayoutManager(allEventsLayoutManager)
     }
 
-
-    var prefs: Preferences? = null
     override fun onClick(event: Event) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         val eventFragment = EventFragment()
@@ -61,12 +71,6 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
         fragmentTransaction.addToBackStack("Home")
         fragmentTransaction.commit()
     }
-
-    private lateinit var allEventsRecyclerView: RecyclerView
-    private lateinit var allEventsAdapter: EventsAdapter
-    private lateinit var allEventsLayoutManager: RecyclerView.LayoutManager
-
-    private var events = ArrayList<Event>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -82,17 +86,8 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-//        view.fab.setOnClickListener{
-//            view -> startActivity(Intent(view.context, LoginActivity::class.java))
-//        }
-        view.fab.setOnClickListener {
-//            if (prefs!!.userToken == null || prefs!!.userToken == "") {
-//                view -> startActivity(Intent(view.context, LoginActivity::class.java))
-            view -> startActivity(Intent(view.context, CreateEvent::class.java))
-//            } else {
+        prefs = Preferences(view.context)
 
-//            }
-        }
         allEventsRecyclerView = view.eventsRecyclerView
         allEventsAdapter = EventsAdapter(this, events, view.context)
         allEventsLayoutManager = GridLayoutManager(view.context, 1) as RecyclerView.LayoutManager
@@ -100,9 +95,25 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
         allEventsRecyclerView.adapter = allEventsAdapter
         allEventsRecyclerView.layoutManager = allEventsLayoutManager
 
+        view.fab.setOnClickListener {
+            Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs!!.userToken} token and ${prefs!!.userId} id and time ${prefs!!.time}.")
+            /*MeetAndTravelApi.requestUser(prefs!!.userToken!!, prefs!!.userId.toString(),
+                { response -> handleUserResponse(view.context, response) }, { error -> handleUserError(view.context!!, error)})*/
+            if(validateTime(prefs!!.time)){
+                startActivity(Intent(view.context, LoginActivity::class.java))
+            } else{
+                startActivity(Intent(context, CreateEvent::class.java))
+            }
+        }
         MeetAndTravelApi.requestAllEvents({response -> handleResponse(response)},{error ->handleError(error)})
         setHasOptionsMenu(true)
         return view
+    }
+
+    private fun validateTime(time: Long): Boolean{
+        val currentTime = System.currentTimeMillis()
+        Log.d(MeetAndTravelApi.tag, "Substract: ${currentTime - time}")
+        return currentTime - time > INVALID_LOGIN
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -129,5 +140,16 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
 
     private fun handleError(anError: ANError?) {
         Log.d(tag, anError!!.message)
+    }
+
+    private fun handleUserResponse(context: Context, response: NetworkResponse?) {
+        Log.d(MeetAndTravelApi.tag, "Sesión válida")
+        startActivity(Intent(context, CreateEvent::class.java))
+    }
+
+    private fun handleUserError(context: Context, anError: ANError?) {
+        val jsonError = JSONObject(anError!!.errorBody)
+        Log.d(MeetAndTravelApi.tag, jsonError.getString("message"))
+        startActivity(Intent(context, LoginActivity::class.java))
     }
 }

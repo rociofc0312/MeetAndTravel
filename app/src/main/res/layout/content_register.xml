@@ -16,20 +16,21 @@
         android:id="@+id/firstnameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name_text"
-        android:inputType="textPersonName"
         android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/questrial"
-        android:textSize="@dimen/text_size_14"
-        android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorSecondaryText"
         android:drawableStart="@drawable/ic_person_primary_24dp"
         android:drawablePadding="@dimen/padding_8"
+        android:fontFamily="@font/questrial"
+        android:hint="@string/name_text"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:textSize="@dimen/text_size_14"
         app:layout_constraintBottom_toTopOf="@+id/lastnameEdiText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <EditText
         android:id="@+id/lastnameEdiText"

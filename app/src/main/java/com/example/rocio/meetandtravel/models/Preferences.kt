@@ -7,12 +7,13 @@ class Preferences(val context: Context){
     companion object {
         val userToken = "userToken"
         val userId = "userId"
+        val time = "time"
     }
 
     val preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
     var userToken: String? = preferences.getString(
-            Preferences.userToken, null)
+            Preferences.userToken, "unset")
     set(value) = preferences.edit().putString(
             Preferences.userToken, value).apply()
 
@@ -20,4 +21,9 @@ class Preferences(val context: Context){
             Preferences.userId, 0)
     set(value) = preferences.edit().putInt(
                 Preferences.userId, value).apply()
+
+    var time: Long = preferences.getLong(
+            Preferences.time, 0)
+    set(value) = preferences.edit().putLong(
+                Preferences.time, value).apply()
 }

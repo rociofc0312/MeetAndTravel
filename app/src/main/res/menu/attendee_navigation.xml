@@ -6,19 +6,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_tickets"
-        android:icon="@drawable/ic_local_play_black_24dp"
+        android:id="@+id/navigation_purchases"
+        android:icon="@drawable/ic_qrcode_24dp"
         android:title="@string/title_tickets" />
 
     <item
-        android:id="@+id/navigation_myevents"
-        android:icon="@drawable/ic_event_black_24dp"
+        android:id="@+id/navigation_logistic"
+        android:icon="@drawable/ic_calendar_star_24dp"
         android:title="@string/title_tickets" />
-
-    <item
-        android:id="@+id/navigation_reservations"
-        android:icon="@drawable/ic_hotel_black_24dp"
-        android:title="@string/reservations_title" />
 
     <item
         android:id="@+id/navigation_profile"

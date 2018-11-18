@@ -39,14 +39,14 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 return HomeFragment()
             }
-            R.id.navigation_myevents -> {
+            R.id.navigation_logistic -> {
                 if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
                     return EventsFragment()
                 }
             }
-            R.id.navigation_tickets -> {
+            R.id.navigation_purchases -> {
                 if (prefs!!.userToken == null || prefs!!.userToken == "") {
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
@@ -58,13 +58,6 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
                     return MyProvidersFragment()
-                }
-            }
-            R.id.navigation_reservations -> {
-                if (prefs!!.userToken == null || prefs!!.userToken == "") {
-                    startActivity(Intent(this, LoginActivity::class.java))
-                } else {
-                    return ReservationFragment()
                 }
             }
         }

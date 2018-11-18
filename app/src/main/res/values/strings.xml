@@ -21,7 +21,7 @@
     <string name="providers_event_title">Proveedores de Estadías</string>
     <string name="company_title_text">Organizadora: </string>
     <string name="start_date_title">Inicio</string>
-    <string name="end_date_text">Fin</string>
+    <string name="end_date_title">Fin</string>
     <string name="address_title_text">Dirección</string>
     <string name="providers_button_text">VER ESTADÍAS</string>
     <string name="buy_button_text">COMPRAR</string>
@@ -42,4 +42,16 @@
     <string name="profile_title">Perfil</string>
     <string name="confirm_password_text">Confirmar contraseña</string>
     <string name="eventos_title">Eventos</string>
+    <string name="search_title">Search</string>
+    <string name="name_event_text">Nombre</string>
+    <string name="company_text">Organizadora</string>
+    <string name="description_text">Descripción</string>
+    <string name="start_date_text">Fecha Inicio</string>
+    <string name="end_date_text">Fecha Fin</string>
+    <string name="end_hour_text">Hora Fin</string>
+    <string name="start_hour_text">Hora inicio</string>
+    <string name="location_text">Dirección</string>
+    <string name="image_button_text">Imagen</string>
+    <string name="image_text">Imagen</string>
+    <string name="create_text">Crear</string>
 </resources>

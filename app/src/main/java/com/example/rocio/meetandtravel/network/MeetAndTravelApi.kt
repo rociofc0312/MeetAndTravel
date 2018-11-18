@@ -11,13 +11,16 @@ import java.io.File
 class MeetAndTravelApi{
     companion object {
         private val baseUrl = "https://movilesapp-220219.appspot.com/api"
-        val allEvents = "$baseUrl/events"
-        val allProviders = "$baseUrl/events/{event_id}/providers"
-        val userLogin = "$baseUrl/users/auth"
-        val userRegister = "$baseUrl/users"
-        val eventRegister = "$baseUrl/users/{user_id}/events"
-        val myTickets = "$baseUrl/tickets/purchases"
+        private val allEvents = "$baseUrl/events"
+        private val allProviders = "$baseUrl/events/{event_id}/providers"
+        private val userLogin = "$baseUrl/users/auth"
+        private val userRegister = "$baseUrl/users"
+        private val user = "$baseUrl/users/{user_id}"
+        private val eventRegister = "$baseUrl/users/{user_id}/events"
+        private val myTickets = "$baseUrl/tickets/purchases"
         val tag = "MeetAndTravel"
+
+        //PUBLIC
 
         fun requestAllEvents(responseHandler: (NetworkResponse?)-> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.get(MeetAndTravelApi.allEvents)
@@ -68,10 +71,31 @@ class MeetAndTravelApi{
                         }
                     })
         }
-        fun requestEventRegister(file: File,event: JSONObject, responseHandler: (TestResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
+
+        fun requestUser(token: String, userId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?)-> Unit){
+            AndroidNetworking.get(MeetAndTravelApi.user)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
+                    .addPathParameter("user_id", userId)
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        //PRIVATE
+
+        fun requestEventRegister(token: String, userId: String, file: File,event: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.upload(MeetAndTravelApi.eventRegister)
-                    .addPathParameter("user_id", "1")
-                    .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiUm9jw61vIERhbmllbGEiLCJsYXN0bmFtZSI6IkZlcm7DoW5kZXogQ2FuYWxlcyIsImVtYWlsIjoicm9jaW9mYzAzMTJAZ21haWwuY29tIiwidGVsZXBob25lIjoiOTkxNzkwNjI0IiwiZG5pIjoiNzE5Njk4MjMiLCJiaXJ0aGRhdGUiOiIxOTk3LTAzLTEyIiwiY3JlYXRlZF9hdCI6IjIwMTgtMTEtMDJUMjM6NDI6MjkuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE4LTExLTA3VDA2OjU0OjIwLjAwMFoiLCJpYXQiOjE1NDE4MzEzNTgsImV4cCI6MTU0MTg2MDE1OH0.TOVDlqg3qGtzMHJ99DiM32zD4R5UbGzAyw4nngzvzC0")
+                    .addPathParameter("user_id", userId)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
                     .addMultipartFile("file",file)
                     .addMultipartParameter("name", event.getString("name"))
                     .addMultipartParameter("description", event.getString("description"))
@@ -92,8 +116,8 @@ class MeetAndTravelApi{
                     .setPriority(Priority.MEDIUM)
                     .setTag(tag)
                     .build()
-                    .getAsObject(TestResponse::class.java, object : ParsedRequestListener<TestResponse>{
-                        override fun onResponse(response: TestResponse?) {
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse>{
+                        override fun onResponse(response: NetworkResponse?) {
                             responseHandler(response)
                         }
                         override fun onError(anError: ANError?) {
