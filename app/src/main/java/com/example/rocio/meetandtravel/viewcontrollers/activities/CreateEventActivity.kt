@@ -23,8 +23,7 @@ import android.os.Handler
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.network.NetworkResponse
 import android.support.v4.os.HandlerCompat.postDelayed
-
-
+import com.example.rocio.meetandtravel.models.Event
 
 
 class CreateEventActivity : AppCompatActivity() {
@@ -32,7 +31,7 @@ class CreateEventActivity : AppCompatActivity() {
     private val STORAGE_PERMISSION_CODE = 123
     private lateinit var filePath: Uri
     var prefs: Preferences? = null
-
+    var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +75,7 @@ class CreateEventActivity : AppCompatActivity() {
 
     private fun handleEventResponse(response: NetworkResponse?) {
         Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
+        event = response!!.event
         startCreateTickets()
     }
 
@@ -151,7 +151,7 @@ class CreateEventActivity : AppCompatActivity() {
 
     private fun startCreateTickets(){
         Handler().postDelayed({
-            startActivity(Intent(this, CreateTicketsActivity::class.java))
+            startActivity(Intent(this, CreateTicketsActivity::class.java).putExtras(event!!.toBundle()))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         },2000)
     }

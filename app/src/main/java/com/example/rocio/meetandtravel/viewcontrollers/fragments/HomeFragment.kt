@@ -102,7 +102,7 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
             if(validateTime(prefs!!.time)){
                 startActivity(Intent(view.context, LoginActivity::class.java))
             } else{
-                startActivity(Intent(context, CreateTicketsActivity::class.java))
+                startActivity(Intent(context, CreateEventActivity::class.java))
             }
         }
         MeetAndTravelApi.requestAllEvents({response -> handleResponse(response)},{error ->handleError(error)})

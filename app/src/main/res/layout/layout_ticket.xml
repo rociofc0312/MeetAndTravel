@@ -57,7 +57,17 @@
         android:textAlignment="center"
         android:textSize="@dimen/text_size_14" />
 
+    <TextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:fontFamily="@font/questrial"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_14" />
+
     <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/quantitySeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_8" />
