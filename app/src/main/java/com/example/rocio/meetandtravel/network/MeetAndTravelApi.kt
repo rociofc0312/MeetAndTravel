@@ -155,10 +155,11 @@ class MeetAndTravelApi {
                     })
         }
 
-        fun requestCreateTickets(tickets: ArrayList<JSONObject>, token: String, eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+        fun requestCreateTickets(tickets: JSONArray, token: String, eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
             AndroidNetworking.post(MeetAndTravelApi.ticketsRegister)
-                    .addHeaders("Authorization", token)
+                    .addHeaders("Authorization",String.format("Bearer %s", token))
                     .addPathParameter("event_id", eventId)
+                    .addJSONArrayBody(tickets)
                     .setPriority(Priority.LOW)
                     .setTag(tag)
                     .build()

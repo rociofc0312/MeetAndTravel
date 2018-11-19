@@ -55,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d(MeetAndTravelApi.tag, user.toString())
         Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs.userToken} token and ${prefs.userId} id and time ${prefs.time}.")
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun handleError(anError: ANError?) {

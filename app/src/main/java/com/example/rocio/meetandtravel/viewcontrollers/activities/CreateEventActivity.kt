@@ -153,6 +153,7 @@ class CreateEventActivity : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this, CreateTicketsActivity::class.java).putExtras(event!!.toBundle()))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
         },2000)
     }
 

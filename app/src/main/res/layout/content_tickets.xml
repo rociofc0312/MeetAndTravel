@@ -146,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:progress="20"
-                    android:max="1000"
+                    android:max="500"
                     android:layout_marginTop="@dimen/margin_8" />
             </LinearLayout>
 
