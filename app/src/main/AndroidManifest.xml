@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rocio.meetandtravel">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- add these permissions -->
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     <application
         android:name=".MeetAndTravelApp"
@@ -39,9 +39,10 @@
         <activity
             android:name=".viewcontrollers.activities.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".viewcontrollers.activities.CreateEvent" android:parentActivityName=".viewcontrollers.activities.MainActivity"></activity>
-        <activity android:name=".viewcontrollers.activities.CreateEventActivity"></activity>
+        <activity
+            android:name=".viewcontrollers.activities.CreateEventActivity"
+            android:parentActivityName=".viewcontrollers.activities.MainActivity" />
+        <activity android:name=".viewcontrollers.activities.CreateTicketsActivity"/>
     </application>
 
 </manifest>

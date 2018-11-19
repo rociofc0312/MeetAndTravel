@@ -54,4 +54,12 @@
     <string name="image_button_text">Imagen</string>
     <string name="image_text">Imagen</string>
     <string name="create_text">Crear</string>
+    <string name="new_event_title_text">Crea un nuevo evento</string>
+    <string name="new_event_description_text">¡Y atrae a nuevos interesados de distintos lugares!</string>
+    <string name="ticket_name">Ticket</string>
+    <string name="ticket_price">Precio</string>
+    <string name="quantity_text">Cantidad</string>
+    <string name="new_tickets_title_text">Crea los tickets de tu evento</string>
+    <string name="new_tickets_description_text">¡Y que la gente comience a adquirirlos!</string>
+    <string name="create_tickets_text">Crear tickets</string>
 </resources>

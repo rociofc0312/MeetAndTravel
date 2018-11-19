@@ -16,10 +16,10 @@ import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import com.example.rocio.meetandtravel.models.Preferences
-import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEvent
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEventActivity
 import android.support.v7.widget.SearchView
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateTicketsActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.LoginActivity
-import com.example.rocio.meetandtravel.viewcontrollers.activities.RegisterActivity
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.EventsAdapter
 import org.json.JSONObject
 
@@ -102,7 +102,7 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
             if(validateTime(prefs!!.time)){
                 startActivity(Intent(view.context, LoginActivity::class.java))
             } else{
-                startActivity(Intent(context, CreateEvent::class.java))
+                startActivity(Intent(context, CreateTicketsActivity::class.java))
             }
         }
         MeetAndTravelApi.requestAllEvents({response -> handleResponse(response)},{error ->handleError(error)})
@@ -144,7 +144,7 @@ class HomeFragment : Fragment(), EventsAdapter.OnEventClickListener, SearchView.
 
     private fun handleUserResponse(context: Context, response: NetworkResponse?) {
         Log.d(MeetAndTravelApi.tag, "Sesión válida")
-        startActivity(Intent(context, CreateEvent::class.java))
+        startActivity(Intent(context, CreateEventActivity::class.java))
     }
 
     private fun handleUserError(context: Context, anError: ANError?) {

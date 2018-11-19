@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_16">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/createTicketsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ticketSymbolImage"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/tickets_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ticketLayoutText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:fontFamily="@font/questrial"
+                android:text="@string/new_tickets_title_text"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticketSymbolImage" />
+
+            <TextView
+                android:id="@+id/ticketlayoutDescription"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:fontFamily="@font/questrial"
+                android:text="@string/new_tickets_description_text"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticketLayoutText" />
+
+            <ImageView
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_add_accent_32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="@dimen/padding_8"
+                app:layout_constraintTop_toBottomOf="@+id/ticketlayoutDescription"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/parentNewTicketLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createTicketsLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_8"
+                android:layout_marginBottom="@dimen/margin_8">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/nameTicketTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_0"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/nameTicketEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawableStart="@drawable/ic_local_play_primary_24dp"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:fontFamily="@font/questrial"
+                        android:hint="@string/ticket_name"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textColorHint="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_14" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/priceTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_0"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/priceTicketEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawableStart="@drawable/ic_sol_primary_24dp"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:fontFamily="@font/questrial"
+                        android:hint="@string/ticket_price"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textColorHint="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_14" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:fontFamily="@font/questrial"
+                    android:text="@string/quantity_text"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_size_14" />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/createTicketsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrial"
+                android:textStyle="bold"
+                android:text="@string/create_tickets_text"/>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
