@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/menu1"
-        android:title="Menu 1" />
+        android:title="Edit Event" />
 
     <item
         android:id="@+id/menu2"
-        android:title="Menu 2" />
+        android:title="Add Providers" />
 
     <item
         android:id="@+id/menu3"
-        android:title="Menu 3" />
+        android:title="Add Attendee" />
 
 
 </menu>
