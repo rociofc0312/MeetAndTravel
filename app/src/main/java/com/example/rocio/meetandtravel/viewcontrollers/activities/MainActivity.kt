@@ -47,14 +47,15 @@ class MainActivity : AppCompatActivity() {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    return EventsFragment()
+                    return TicketsFragment()
+
                 }
             }
             R.id.navigation_purchases -> {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    return TicketsFragment()
+                    return EventsFragment()
                 }
             }
             R.id.navigation_profile -> {
