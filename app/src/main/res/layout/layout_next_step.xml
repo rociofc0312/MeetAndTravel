@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_16"
             android:fontFamily="@font/questrial"
-            android:lines="2"
             android:text="@string/whats_next_text"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"

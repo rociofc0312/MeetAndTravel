@@ -20,6 +20,8 @@ class MeetAndTravelApi {
         private val eventRegister = "$baseUrl/users/{user_id}/events"
         private val myTickets = "$baseUrl/tickets/purchases"
         private val ticketsRegister = "$baseUrl/events/{event_id}/tickets"
+        private val myProviders = "${baseUrl}/users/{user_id}/providers"
+        private val myProvidersWithEvent = "${baseUrl}/events/{event_id}/providers"
         val tag = "MeetAndTravel"
 
         //PUBLIC
@@ -92,6 +94,23 @@ class MeetAndTravelApi {
                     })
         }
 
+        fun requestAllProviders(eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
+            AndroidNetworking.get(MeetAndTravelApi.allProviders)
+                    .addPathParameter("event_id", eventId)
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
         //PRIVATE
 
         fun requestEventRegister(token: String, userId: String, file: File, event: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
@@ -121,26 +140,9 @@ class MeetAndTravelApi {
                     })
         }
 
-        fun requestAllProviders(eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
-            AndroidNetworking.get(MeetAndTravelApi.allProviders)
-                    .addPathParameter("event_id", eventId)
-                    .setPriority(Priority.LOW)
-                    .setTag(tag)
-                    .build()
-                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
-                        override fun onResponse(response: NetworkResponse?) {
-                            responseHandler(response)
-                        }
-
-                        override fun onError(anError: ANError?) {
-                            errorHandler(anError)
-                        }
-                    })
-        }
-
         fun requestMyTickets(token: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.get(MeetAndTravelApi.myTickets)
-                    .addHeaders("Authorization", token)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
                     .setPriority(Priority.LOW)
                     .setTag(tag)
                     .build()
@@ -155,11 +157,48 @@ class MeetAndTravelApi {
                     })
         }
 
-        fun requestCreateTickets(tickets: JSONArray, token: String, eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+        fun requestCreateTickets(tickets: JSONArray, token: String, eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.post(MeetAndTravelApi.ticketsRegister)
-                    .addHeaders("Authorization",String.format("Bearer %s", token))
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
                     .addPathParameter("event_id", eventId)
                     .addJSONArrayBody(tickets)
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun requestMyProviders(token: String, userId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(MeetAndTravelApi.myProviders)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
+                    .addPathParameter("user_id", userId)
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
+        fun requestMyProvidersWithMyEvent(myProviders: JSONArray, token: String, eventId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.post(MeetAndTravelApi.myProvidersWithEvent)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
+                    .addPathParameter("event_id", eventId)
+                    .addJSONArrayBody(myProviders)
                     .setPriority(Priority.LOW)
                     .setTag(tag)
                     .build()

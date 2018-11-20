@@ -20,6 +20,7 @@ import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateEventAct
 import android.support.v7.widget.SearchView
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateTicketsActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.LoginActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.SelectProvidersActivity
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.EventsAdapter
 import org.json.JSONObject
 

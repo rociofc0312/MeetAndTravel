@@ -64,7 +64,9 @@
     <string name="create_tickets_text">Crear tickets</string>
     <string name="number_of_tickets" formatted="false">%1$d tickets</string>
     <string name="success_text">¡Genial!</string>
-    <string name="whats_next_text">Organizaste de manera exitosa un nuevo evento ¿Qué deseas hacer ahora?</string>
+    <string name="whats_next_text">Organizaste de manera exitosa un nuevo evento ¿Deseas continuar y elegir los proveedores de tu nuevo evento o volver a la vista principal?</string>
     <string name="back_text">Volver</string>
     <string name="continue_text">Continuar</string>
+    <string name="my_events_tab_text">Mis eventos</string>
+    <string name="my_providers_tab_text">Mis proveedores</string>
 </resources>

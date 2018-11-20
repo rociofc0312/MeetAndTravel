@@ -14,7 +14,6 @@ import com.example.rocio.meetandtravel.models.Event
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi.Companion.tag
 import org.json.JSONObject
 import com.androidnetworking.error.ANError
-import com.example.rocio.meetandtravel.SelectProvidersActivity
 import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
@@ -80,7 +79,8 @@ class CreateTicketsActivity : AppCompatActivity() {
         }
         customDialog.continueButton.setOnClickListener {
             customDialog.dismiss()
-            startActivity(Intent(this, SelectProvidersActivity::class.java))
+            startActivity(Intent(this, SelectProvidersActivity::class.java).putExtras(event!!.toBundle()))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
     }
@@ -109,7 +109,7 @@ class CreateTicketsActivity : AppCompatActivity() {
         Log.d(tag, "Childs: " + (parentNewTicketLayout.childCount-1))
     }
 
-    private fun buildUser(name: String, cost: Float, stock: Int): JSONObject{
+    private fun buildTicket(name: String, cost: Float, stock: Int): JSONObject{
         val jsonObject = JSONObject()
         jsonObject.put("name", name)
         jsonObject.put("cost", cost)
@@ -127,7 +127,7 @@ class CreateTicketsActivity : AppCompatActivity() {
             val priceTicket = row.findViewById(R.id.priceTicketEditText) as EditText
             val stockTickets = row.findViewById(R.id.quantitySeekBar) as SeekBar
 
-            val ticket = buildUser(nameTicket.text.toString(), NumberFormat.getInstance().parse(priceTicket.text.toString()).toFloat(), stockTickets.progress)
+            val ticket = buildTicket(nameTicket.text.toString(), NumberFormat.getInstance().parse(priceTicket.text.toString()).toFloat(), stockTickets.progress)
             tickets.put(ticket)
         }
         Log.d(tag, "Tickets to send: ${tickets}")

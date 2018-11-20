@@ -10,6 +10,7 @@ import com.example.rocio.meetandtravel.models.Ticket
 import kotlinx.android.synthetic.main.item_my_tickets.view.*
 
 class MyTicketsAdapter( var tickets: List<Ticket>, val context: Context): RecyclerView.Adapter<MyTicketsAdapter.ViewHolder>(){
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_my_tickets, p0, false))
     }

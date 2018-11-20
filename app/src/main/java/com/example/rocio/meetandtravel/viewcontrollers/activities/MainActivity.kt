@@ -3,7 +3,6 @@ package com.example.rocio.meetandtravel.viewcontrollers.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    return EventsFragment()
+                    return LogisticsFragment()
                 }
             }
             R.id.navigation_purchases -> {

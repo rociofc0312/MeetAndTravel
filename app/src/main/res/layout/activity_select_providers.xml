@@ -4,6 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectProvidersActivity">
+    tools:context=".viewcontrollers.activities.SelectProvidersActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/selectProvidersRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_top"
+        app:layout_constraintTop_toBottomOf="@id/selectProvidersRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/padding_8">
+        <Button
+            android:id="@+id/addProvidersButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar"/>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

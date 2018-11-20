@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/myProviderLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_8">
+
+        <com.androidnetworking.widget.ANImageView
+            android:id="@+id/myProviderImageView"
+            android:layout_width="@dimen/size_70"
+            android:layout_height="@dimen/size_70"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/myProviderNameTextView"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/size_0"
+            android:layout_marginStart="@dimen/margin_8"
+            android:text="@string/mock_text"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/questrial"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/myProviderImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/myProviderLocationTextView"/>
+
+        <CheckBox
+            android:id="@+id/myProviderCheckBox"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/myProviderLocationTextView"/>
+
+        <TextView
+            android:id="@+id/myProviderLocationTextView"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/size_0"
+            android:gravity="center_vertical"
+            android:text="@string/mock_text"
+            android:fontFamily="@font/questrial"
+            android:layout_marginStart="@dimen/margin_8"
+            app:layout_constraintStart_toEndOf="@id/myProviderImageView"
+            app:layout_constraintTop_toBottomOf="@id/myProviderNameTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
