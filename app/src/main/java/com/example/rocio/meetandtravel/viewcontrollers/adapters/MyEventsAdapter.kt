@@ -14,7 +14,9 @@ import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import kotlinx.android.synthetic.main.item_my_events.view.*
 import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateProvidersActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateTicketsActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.UpdateEventActivity
 
 
 class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerView.Adapter<MyEventsAdapter.ViewHolder>(){
@@ -40,7 +42,7 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
                 override fun onMenuItemClick(item: MenuItem): Boolean {
                     when (item.itemId) {
                         R.id.menu1 -> {
-                            val intent = Intent(ctx, CreateTicketsActivity::class.java)
+                            val intent = Intent(ctx, UpdateEventActivity::class.java)
                             intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
                         }
@@ -49,8 +51,8 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
                             intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
                         }
-                        R.id.menu3 -> {
-                            val intent = Intent(ctx, CreateTicketsActivity::class.java)
+                        R.id.menu3 -> {//Falta Provedores por Evento...
+                            val intent = Intent(ctx, CreateProvidersActivity::class.java)
                             intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
                         }

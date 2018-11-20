@@ -7,10 +7,10 @@
 
     <item
         android:id="@+id/menu2"
-        android:title="Add Providers" />
+        android:title="Add Tickets" />
 
     <item
         android:id="@+id/menu3"
-        android:title="Add Attendee" />
+        android:title="Add Providers" />
 
 </menu>
