@@ -37,11 +37,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
-    <string name="title_tickets">Tickets</string>
+    <string name="title_purchases">Compras</string>
     <string name="reservations_title">Reservas</string>
     <string name="profile_title">Perfil</string>
     <string name="confirm_password_text">Confirmar contraseña</string>
-    <string name="eventos_title">Eventos</string>
+    <string name="logistic_title">Logística</string>
     <string name="search_title">Search</string>
     <string name="name_event_text">Nombre</string>
     <string name="company_text">Organizadora</string>
@@ -69,4 +69,6 @@
     <string name="continue_text">Continuar</string>
     <string name="my_events_tab_text">Mis eventos</string>
     <string name="my_providers_tab_text">Mis proveedores</string>
+    <string name="my_tickets_tab_text">Entradas</string>
+    <string name="my_reservations_tab_title">Reservas</string>
 </resources>

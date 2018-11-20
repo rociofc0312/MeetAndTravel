@@ -33,12 +33,13 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ff7043" />
-                            <entry key="height" value="32" />
-                            <entry key="outputName" value="ic_add_accent_32dp" />
+                            <entry key="height" value="70" />
+                            <entry key="outputName" value="ic_bed" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\ROCIO\Downloads\peru-nuevo-sol-currency-symbol.svg" />
-                            <entry key="width" value="32" />
+                            <entry key="sourceFile" value="C:\Users\ROCIO\Downloads\single-bed.svg" />
+                            <entry key="width" value="70" />
                           </map>
                         </option>
                       </PersistentState>

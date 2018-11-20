@@ -3,7 +3,7 @@ package com.example.rocio.meetandtravel.models
 import android.os.Bundle
 import com.google.gson.annotations.SerializedName
 
-data class Ticket_Type(
+data class TicketType(
         val id: Int,
         val name: String? = "",
         val stock: Int,
@@ -12,8 +12,8 @@ data class Ticket_Type(
         val eventId: String? = null,
         val event: Event? = null){
     companion object {
-        fun from(bundle: Bundle) : Ticket_Type {
-            return Ticket_Type(
+        fun from(bundle: Bundle) : TicketType {
+            return TicketType(
                     bundle.getInt("id"),
                     bundle.getString("name"),
                     bundle.getInt("stock"),

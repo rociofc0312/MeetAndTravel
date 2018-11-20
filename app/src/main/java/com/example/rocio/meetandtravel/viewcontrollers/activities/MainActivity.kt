@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    return TicketsFragment()
+                    return PurchasesFragment()
                 }
             }
             R.id.navigation_profile -> {

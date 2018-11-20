@@ -9,7 +9,7 @@ data class Ticket(
         @SerializedName("user_id")
         val userId: Int,
         @SerializedName("ticket_type")
-        val ticketType: Ticket_Type){
+        val ticketType: TicketType){
 
     companion object {
         fun from(bundle: Bundle) : Ticket {
@@ -17,7 +17,7 @@ data class Ticket(
                     bundle.getInt("id"),
                     bundle.getString("code"),
                     bundle.getInt("user_id"),
-                    Ticket_Type.from(bundle.getBundle("ticket_type"))
+                    TicketType.from(bundle.getBundle("ticket_type"))
             )
         }
     }

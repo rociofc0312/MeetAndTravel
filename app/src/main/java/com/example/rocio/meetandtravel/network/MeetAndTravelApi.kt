@@ -23,6 +23,7 @@ class MeetAndTravelApi {
         private val myEvents = "$baseUrl/users/{user_id}/events"
         private val myProviders = "${baseUrl}/users/{user_id}/providers"
         private val myProvidersWithEvent = "${baseUrl}/events/{event_id}/providers"
+        private val myAccommodations = "${baseUrl}/accommodations/reservations"
         val tag = "MeetAndTravel"
 
         //PUBLIC
@@ -158,6 +159,23 @@ class MeetAndTravelApi {
                     })
         }
 
+        fun requestMyReservations(token: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit){
+            AndroidNetworking.get(MeetAndTravelApi.myAccommodations)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
+                    .setPriority(Priority.LOW)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
+
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
+
         fun requestMyEvents(token: String, userId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.get(MeetAndTravelApi.myEvents)
                     .addPathParameter("user_id", userId)
@@ -230,6 +248,8 @@ class MeetAndTravelApi {
                         }
                     })
         }
+
+
 
     }
 }

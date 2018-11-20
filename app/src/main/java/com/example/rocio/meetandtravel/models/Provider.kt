@@ -18,8 +18,8 @@ data class Provider(
         val userId:Int){
 
     companion object {
-        fun from(bundle: Bundle) : Event {
-            return Event(
+        fun from(bundle: Bundle) : Provider {
+            return Provider(
                     bundle.getInt("id"),
                     bundle.getString("name"),
                     bundle.getString("ruc"),
@@ -28,7 +28,7 @@ data class Provider(
                     bundle.getString("telephone"),
                     bundle.getString("web_address"),
                     bundle.getString("provider_image"),
-                    bundle.getString("user_id")
+                    bundle.getInt("user_id")
             )
         }
     }

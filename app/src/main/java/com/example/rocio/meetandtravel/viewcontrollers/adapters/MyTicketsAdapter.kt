@@ -25,7 +25,7 @@ class MyTicketsAdapter( var tickets: List<Ticket>, val context: Context): Recycl
     }
 
     class ViewHolder(view:View): RecyclerView.ViewHolder(view){
-        val ticketImageView =  view.ticketImageView
+        val ticketImageView =  view.myTicketImageView
         val dateEventTextView = view.dateEventTextView
         val nameEventTextView = view.nameEventTextView
 
