@@ -13,5 +13,4 @@
         android:id="@+id/menu3"
         android:title="Add Attendee" />
 
-
 </menu>

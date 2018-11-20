@@ -41,20 +41,18 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
                     when (item.itemId) {
                         R.id.menu1 -> {
                             val intent = Intent(ctx, CreateTicketsActivity::class.java)
-                            intent.putExtra("mensaje", "Editar Evento")
+                            intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
                         }
                         R.id.menu2 -> {
                             val intent = Intent(ctx, CreateTicketsActivity::class.java)
-                            intent.putExtra("mensaje", "Agregar Tickets")
+                            intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
-//                            Log.d(MeetAndTravelApi.tag, "menu-2 " + events.id)
                         }
                         R.id.menu3 -> {
                             val intent = Intent(ctx, CreateTicketsActivity::class.java)
-                            intent.putExtra("mensaje", "Agregar Hospedaje")
+                            intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
-//                            Log.d(MeetAndTravelApi.tag, "menu-3 " + events.id)
                         }
                     }
                     return false
