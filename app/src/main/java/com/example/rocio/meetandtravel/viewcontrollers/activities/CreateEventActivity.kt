@@ -32,10 +32,11 @@ class CreateEventActivity : AppCompatActivity() {
     private lateinit var filePath: Uri
     var prefs: Preferences? = null
     var event: Event? = null
-
+    private lateinit var idEvent: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
+
         setupActionBar()
 
         prefs = Preferences(this)

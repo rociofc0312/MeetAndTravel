@@ -48,7 +48,6 @@ class EventFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
-
         return view
     }
 

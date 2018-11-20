@@ -10,9 +10,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import com.example.rocio.meetandtravel.R
 import com.example.rocio.meetandtravel.models.Event
-import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import kotlinx.android.synthetic.main.item_my_events.view.*
-import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateProvidersActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateTicketsActivity
