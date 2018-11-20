@@ -25,10 +25,10 @@ import java.text.NumberFormat
 
 class CreateTicketsActivity : AppCompatActivity() {
 
-    var event: Event? = null
+//    var event: Event? = null
     private var tickets = JSONArray()
     var prefs: Preferences? = null
-
+    private lateinit var idEvent: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_tickets)
@@ -37,9 +37,11 @@ class CreateTicketsActivity : AppCompatActivity() {
         prefs = Preferences(this)
 
         val intent = intent?: return
-        event =  Event.from(intent.extras)
 
-        Log.d(tag, "From event: " + event)
+        var bundle :Bundle ?=intent.extras
+        idEvent = bundle!!.getString("IdEvent")
+//        var IdEvent2: String = intent.getStringExtra("IdEvent")
+        Toast.makeText(this, idEvent, Toast.LENGTH_SHORT).show()
 
         quantitySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
@@ -132,6 +134,6 @@ class CreateTicketsActivity : AppCompatActivity() {
         }
         Log.d(tag, "Tickets to send: ${tickets}")
 
-        MeetAndTravelApi.requestCreateTickets(tickets, prefs!!.userToken!!, event!!.id.toString(), { response -> handleResponse(context, response) }, { error -> handleError(error)})
+        MeetAndTravelApi.requestCreateTickets(tickets, prefs!!.userToken!!, idEvent, { response -> handleResponse(context, response) }, { error -> handleError(error)})
     }
 }
