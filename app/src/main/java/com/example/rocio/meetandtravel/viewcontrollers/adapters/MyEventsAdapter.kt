@@ -19,17 +19,22 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        val event = events.get(p1)
-        holder.updateFrom(event)
+        val events = events.get(p1)
+        holder.updateFrom(events)
     }
 
     class ViewHolder(view:View): RecyclerView.ViewHolder(view){
-        val EventImageView =  view.imageView2
-        val EventTextView = view.video_title
+        val EventImageView =  view.eventImageView
+        val EventNameTextView = view.nameTextView
+        val EventDescriptionTextView = view.descriptionTextView
 
 
         fun updateFrom(event: Event){
-            EventTextView.text = event.name
+
+            EventImageView.setImageUrl(event.eventImage)
+            EventNameTextView.text = event.name
+            EventDescriptionTextView.text = event.description
+
         }
     }
 }

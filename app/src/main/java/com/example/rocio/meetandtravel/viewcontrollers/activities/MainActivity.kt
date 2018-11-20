@@ -43,15 +43,15 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 return HomeFragment()
             }
-            R.id.navigation_logistic -> {
+            R.id.navigation_purchases -> {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
-                    return TicketsFragment()
 
+                    return TicketsFragment()
                 }
             }
-            R.id.navigation_purchases -> {
+            R.id.navigation_logistic -> {
                 if(validateTime(prefs!!.time)){
                     startActivity(Intent(this, LoginActivity::class.java))
                 } else {
