@@ -124,7 +124,7 @@ class MeetAndTravelApi {
         fun requestMyEvents(token: String, userId: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.get(MeetAndTravelApi.myEvents)
                     .addPathParameter("user_id", userId)
-                    .addHeaders("Authorization", token)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
                     .setPriority(Priority.LOW)
                     .setTag(tag)
                     .build()
