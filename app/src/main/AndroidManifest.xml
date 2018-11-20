@@ -45,8 +45,9 @@
         <activity
             android:name=".viewcontrollers.activities.CreateTicketsActivity"
             android:parentActivityName=".viewcontrollers.activities.MainActivity" />
-        <activity android:name=".viewcontrollers.activities.SelectProvidersActivity"
-            android:parentActivityName=".viewcontrollers.activities.MainActivity"></activity>
+        <activity android:name=".viewcontrollers.activities.SelectProvidersActivity" />
+        <activity android:name=".viewcontrollers.activities.UpdateEventActivity" />
+        <activity android:name=".viewcontrollers.activities.CreateProvidersActivity"></activity>
     </application>
 
 </manifest>
