@@ -26,6 +26,9 @@ class MyTicketsFragment : Fragment() {
     private lateinit var myTicketsLayoutManager: RecyclerView.LayoutManager
 
     private var tickets = ArrayList<Ticket>()
+    private var newTickets = ArrayList<Ticket>()
+    var nameTable: MutableMap<Int, Int> = mutableMapOf()
+    var nameTable2: MutableMap<Int, Int> = mutableMapOf()
     var prefs: Preferences? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +38,7 @@ class MyTicketsFragment : Fragment() {
 
         myTicketsRecyclerView = view.myTicketsRecyclerView
         myTicketsAdapter = MyTicketsAdapter(tickets, view.context)
-        myTicketsLayoutManager = GridLayoutManager(view.context, 1)
+        myTicketsLayoutManager = GridLayoutManager(view.context, 1) as RecyclerView.LayoutManager
 
         myTicketsRecyclerView.adapter = myTicketsAdapter
         myTicketsRecyclerView.layoutManager = myTicketsLayoutManager
@@ -48,15 +51,38 @@ class MyTicketsFragment : Fragment() {
 
         return view
     }
-
+    private fun getCantTicketEvent( idEvento:Int) : Int
+    {
+        var cant = 0
+        tickets.forEach {
+            if (it.ticketType.event!!.id == idEvento)
+            {
+                cant = cant++
+            }
+        }
+        return cant
+    }
     private fun handleResponse(response: NetworkResponse?) {
         if ("error".equals(response!!.status, true)) {
             Log.d(MeetAndTravelApi.tag, response.message)
             return
         }
         tickets = response.tickets!!
-        Log.d(MeetAndTravelApi.tag, "Found ${tickets.size} Tickets")
-        myTicketsAdapter.tickets = tickets
+        tickets.forEach{
+            var cant:Int
+
+            var eval:Int = it.ticketType.event!!.id
+
+            if (!nameTable.containsKey(eval))
+            {
+                cant = getCantTicketEvent(eval)
+                nameTable.put(eval,cant)
+                newTickets.add(it)
+                Log.d(MeetAndTravelApi.tag,it.ticketType.event!!.id.toString())
+            }
+        }
+        Log.d(MeetAndTravelApi.tag, "Found ${newTickets.size} Tickets")
+        myTicketsAdapter.tickets = newTickets
         myTicketsAdapter.notifyDataSetChanged()
     }
 
