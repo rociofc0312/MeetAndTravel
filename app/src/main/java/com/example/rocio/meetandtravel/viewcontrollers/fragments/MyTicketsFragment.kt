@@ -55,7 +55,7 @@ class MyTicketsFragment : Fragment() {
             return
         }
         tickets = response.tickets!!
-        Log.d(MeetAndTravelApi.tag, "Found ${tickets.size} providers")
+        Log.d(MeetAndTravelApi.tag, "Found ${tickets.size} Tickets")
         myTicketsAdapter.tickets = tickets
         myTicketsAdapter.notifyDataSetChanged()
     }
