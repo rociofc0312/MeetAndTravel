@@ -15,7 +15,6 @@ import com.example.rocio.meetandtravel.models.Provider
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.MyProvidersAdapter
-import kotlinx.android.synthetic.main.fragment_events.view.*
 import kotlinx.android.synthetic.main.fragment_my_providers.view.*
 
 class MyProvidersFragment : Fragment() {

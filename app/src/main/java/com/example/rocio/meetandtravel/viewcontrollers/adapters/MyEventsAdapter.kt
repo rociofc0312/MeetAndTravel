@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.item_my_events.view.*
 import android.content.Intent
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateProvidersActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateTicketsActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.SelectProvidersActivity
 import com.example.rocio.meetandtravel.viewcontrollers.activities.UpdateEventActivity
 
 
@@ -50,7 +51,7 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
                             ctx?.startActivity(intent)
                         }
                         R.id.menu3 -> {//Falta Provedores por Evento...
-                            val intent = Intent(ctx, CreateProvidersActivity::class.java)
+                            val intent = Intent(ctx, SelectProvidersActivity::class.java)
                             intent.putExtra("IdEvent", events.id.toString())
                             ctx?.startActivity(intent)
                         }

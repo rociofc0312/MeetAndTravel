@@ -21,9 +21,9 @@ class MeetAndTravelApi {
         private val myTickets = "$baseUrl/tickets/purchases"
         private val ticketsRegister = "$baseUrl/events/{event_id}/tickets"
         private val myEvents = "$baseUrl/users/{user_id}/events"
-        private val myProviders = "${baseUrl}/users/{user_id}/providers"
-        private val myProvidersWithEvent = "${baseUrl}/events/{event_id}/providers"
-        private val myAccommodations = "${baseUrl}/accommodations/reservations"
+        private val myProviders = "$baseUrl/users/{user_id}/providers"
+        private val myProvidersWithEvent = "$baseUrl/events/{event_id}/providers"
+        private val myAccommodations = "$baseUrl/accommodations/reservations"
         val tag = "MeetAndTravel"
 
         //PUBLIC
