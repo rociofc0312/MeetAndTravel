@@ -4,6 +4,7 @@ package com.example.rocio.meetandtravel.viewcontrollers.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -132,7 +133,14 @@ class PurchaseFragment : Fragment() {
         Toast.makeText(context, response!!.message, Toast.LENGTH_LONG).show()
         Log.d(MeetAndTravelApi.tag, response!!.message)
     }
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.let {
+            it.title = "Comprar Ticket"
+        }
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 //    // TODO: Rename method, update argument and hook method into UI event
 //    fun onButtonPressed(uri: Uri) {
 //        listener?.onFragmentInteraction(uri)

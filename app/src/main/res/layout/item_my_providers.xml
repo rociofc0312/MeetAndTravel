@@ -33,13 +33,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/myProviderLocationTextView"/>
 
-        <!--<CheckBox-->
-            <!--android:id="@+id/myProviderCheckBox"-->
-            <!--android:layout_width="@dimen/size_0"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent"-->
-            <!--app:layout_constraintBottom_toTopOf="@id/myProviderLocationTextView"/>-->
+        <CheckBox
+            android:id="@+id/myProviderCheckBox"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/myProviderLocationTextView"/>
 
         <TextView
             android:id="@+id/myProviderLocationTextView"
