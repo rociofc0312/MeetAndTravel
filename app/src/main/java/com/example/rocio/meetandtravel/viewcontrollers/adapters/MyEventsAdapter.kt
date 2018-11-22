@@ -42,17 +42,17 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
                     when (item.itemId) {
                         R.id.menu1 -> {
                             val intent = Intent(ctx, UpdateEventActivity::class.java)
-                            intent.putExtra("IdEvent", events.id.toString())
+                            intent.putExtra("id", events.id.toString())
                             ctx?.startActivity(intent)
                         }
                         R.id.menu2 -> {
                             val intent = Intent(ctx, CreateTicketsActivity::class.java)
-                            intent.putExtra("IdEvent", events.id.toString())
+                            intent.putExtra("id", events.id.toString())
                             ctx?.startActivity(intent)
                         }
                         R.id.menu3 -> {//Falta Provedores por Evento...
                             val intent = Intent(ctx, SelectProvidersActivity::class.java)
-                            intent.putExtra("IdEvent", events.id.toString())
+                            intent.putExtra("id", events.id.toString())
                             ctx?.startActivity(intent)
                         }
                     }

@@ -28,7 +28,7 @@ class SelectProvidersActivity : AppCompatActivity() {
     private var providersRelated = JSONArray()
     var prefs: Preferences? = null
     var event: Event? = null
-
+    lateinit var idEvent: String
     private var providers = ArrayList<com.example.rocio.meetandtravel.models.Provider>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,8 @@ class SelectProvidersActivity : AppCompatActivity() {
         prefs = Preferences(this)
 
         val intent = intent?: return
-        event =  Event.from(intent.extras)
+        idEvent = intent.getStringExtra("id")
+//        event =  Event.from(intent.extras)
 
         setRecyclerView()
         requestMyProviders()

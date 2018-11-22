@@ -35,4 +35,8 @@ data class TicketType(
         }
         return bundle
     }
+
+    override fun toString() : String{
+        return name!!
+    }
 }

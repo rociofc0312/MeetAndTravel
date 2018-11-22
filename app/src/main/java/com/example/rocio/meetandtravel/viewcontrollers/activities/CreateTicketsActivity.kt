@@ -28,7 +28,7 @@ class CreateTicketsActivity : AppCompatActivity() {
     var event: Event? = null
     private var tickets = JSONArray()
     var prefs: Preferences? = null
-
+    lateinit var idEvent: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_tickets)
@@ -37,8 +37,10 @@ class CreateTicketsActivity : AppCompatActivity() {
         prefs = Preferences(this)
 
         val intent = intent?: return
-        event =  Event.from(intent.extras)
-
+        idEvent = intent.getStringExtra("id")
+//        var bundle :Bundle ?=intent.extras
+//        var message = bundle!!.getString("id")
+//        event =  Event.from(intent.extras)
         quantitySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
                 quantityTextView.text = getString(R.string.number_of_tickets, i)
@@ -77,8 +79,8 @@ class CreateTicketsActivity : AppCompatActivity() {
         }
         customDialog.continueButton.setOnClickListener {
             customDialog.dismiss()
-            startActivity(Intent(this, SelectProvidersActivity::class.java).putExtras(event!!.toBundle()))
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+//            startActivity(Intent(this, SelectProvidersActivity::class.java).putExtras(event!!.toBundle()))
+//            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             finish()
         }
     }
@@ -130,6 +132,6 @@ class CreateTicketsActivity : AppCompatActivity() {
         }
         Log.d(tag, "Tickets to send: ${tickets}")
 
-        MeetAndTravelApi.requestCreateTickets(tickets, prefs!!.userToken!!, event!!.id.toString(), { response -> handleResponse(context, response) }, { error -> handleError(error)})
+        MeetAndTravelApi.requestCreateTickets(tickets, prefs!!.userToken!!, idEvent, { response -> handleResponse(context, response) }, { error -> handleError(error)})
     }
 }

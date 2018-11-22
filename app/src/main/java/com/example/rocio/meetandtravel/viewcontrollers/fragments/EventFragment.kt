@@ -48,6 +48,16 @@ class EventFragment : Fragment() {
             fragmentTransaction.commit()
         }
 
+        view.buyTicketsButton.setOnClickListener {
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            val purchaseFragment = PurchaseFragment()
+            purchaseFragment.arguments = event!!.toBundle()
+            Log.d(tag, arguments.toString())
+            fragmentTransaction.replace(R.id.mainContent, purchaseFragment)
+            fragmentTransaction.addToBackStack("Purchase")
+            fragmentTransaction.commit()
+        }
+
         return view
     }
 

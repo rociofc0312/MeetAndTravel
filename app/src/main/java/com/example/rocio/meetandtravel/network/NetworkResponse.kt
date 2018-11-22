@@ -10,6 +10,7 @@ class NetworkResponse{
     val events: ArrayList<Event>? = ArrayList()
     val providers: ArrayList<Provider>? = ArrayList()
     val tickets: ArrayList<Ticket>? = ArrayList()
+    val ticket_types: ArrayList<TicketType>? = ArrayList()
     val reservations: ArrayList<Accommodation>? = ArrayList()
 
     val user: User? = null
