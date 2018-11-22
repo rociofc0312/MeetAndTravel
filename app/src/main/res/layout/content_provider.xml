@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_16">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/createProviderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/eventSymbolImage"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/event_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ProviderLayoutText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:fontFamily="@font/questrial"
+                android:text="@string/new_provider_title_text"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventSymbolImage" />
+
+            <TextView
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:fontFamily="@font/questrial"
+                android:text="@string/new_provider_description_text"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ProviderLayoutText" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/formProviderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createProviderLayout"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/nameTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/nameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableStart="@drawable/ic_event_primary_24dp"
+                    android:drawablePadding="@dimen/padding_8"
+                    android:fontFamily="@font/questrial"
+                    android:hint="@string/name_event_text"
+                    android:inputType="text"
+                    android:text="Cusco Travel"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_14"
+                    app:layout_constraintBottom_toTopOf="@+id/lastnameEdiText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.6" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/companyTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nameTitleTextView">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/rucEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableStart="@drawable/ic_business_center_primary_24dp"
+                    android:drawablePadding="@dimen/padding_8"
+                    android:fontFamily="@font/questrial"
+                    android:hint="@string/ruc_text"
+                    android:inputType="textPersonName"
+                    android:text="123456789"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_14"
+                    app:layout_constraintBottom_toTopOf="@+id/lastnameEdiText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.6" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/descriptionTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/companyTitleTextView">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/descriptionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableStart="@drawable/ic_description_primary_24dp"
+                    android:drawablePadding="@dimen/padding_8"
+                    android:fontFamily="@font/questrial"
+                    android:hint="@string/description_text"
+                    android:inputType="textPersonName"
+                    android:text="Empresa Aventura SAC"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_14"
+                    app:layout_constraintBottom_toTopOf="@+id/lastnameEdiText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.6" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/datesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descriptionTitleTextView">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/startDateTitleTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/endDateTitleTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/telephoneEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawableStart="@drawable/ic_event_primary_24dp"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:fontFamily="@font/questrial"
+                        android:hint="@string/telephone_text"
+                        android:inputType="textPersonName"
+                        android:text="980740930"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textColorHint="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_14" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/endDateTitleTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/startDateTitleTextView">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/web_addressEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawableStart="@drawable/ic_event_primary_24dp"
+                        android:drawablePadding="@dimen/padding_8"
+                        android:fontFamily="@font/questrial"
+                        android:hint="@string/web_address_text"
+                        android:inputType="textPersonName"
+                        android:text="www.gmail.com"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textColorHint="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_size_14" />
+                </android.support.design.widget.TextInputLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/hoursLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/datesLayout">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/startHourTitleTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toStartOf="@+id/endHourTitleTextView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/endHourTitleTextView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/startHourTitleTextView">
+
+                </android.support.design.widget.TextInputLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/locationTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hoursLayout">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/locationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableStart="@drawable/ic_place_primary_24dp"
+                    android:drawablePadding="@dimen/padding_8"
+                    android:fontFamily="@font/questrial"
+                    android:hint="@string/location_text"
+                    android:inputType="textPersonName"
+                    android:text="Las poncianas 101"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textSize="@dimen/text_size_14"
+                    app:layout_constraintBottom_toTopOf="@+id/lastnameEdiText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.6" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/buttonChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:fontFamily="@font/questrial"
+                android:text="@string/image_button_text"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationTitleTextView" />
+
+            <EditText
+                android:id="@+id/imageNameEditText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:backgroundTint="@color/colorAccent"
+                android:drawableStart="@drawable/ic_image_primary_24dp"
+                android:drawablePadding="@dimen/padding_8"
+                android:enabled="false"
+                android:fontFamily="@font/questrial"
+                android:hint="@string/image_text"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorPrimaryText"
+                android:textColorHint="@color/colorSecondaryText"
+                android:textSize="@dimen/text_size_14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonChoose"
+                app:layout_constraintTop_toBottomOf="@id/locationTitleTextView" />
+
+            <Button
+                android:id="@+id/guardarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/questrial"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="@string/create_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonChoose" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -47,13 +47,14 @@ class SelectProvidersActivity : AppCompatActivity() {
         addProvidersButton.setOnClickListener {
             val myProvidersToSend = castArray(MyProvidersAdapter.checkedProviders)
             Log.d(MeetAndTravelApi.tag, "Providers related: ${providersRelated}")
-            MeetAndTravelApi.requestMyProvidersWithMyEvent(myProvidersToSend, prefs!!.userToken!!,event!!.id.toString(), { response -> handlePostResponse(response) }, { error -> handlePostError(error)})
+            MeetAndTravelApi.requestMyProvidersWithMyEvent(myProvidersToSend, prefs!!.userToken!!,idEvent, { response -> handlePostResponse(response) }, { error -> handlePostError(error)})
         }
     }
 
     private fun handlePostResponse(response: NetworkResponse?) {
         Toast.makeText(this, "Proveedores relacionados correctamente", Toast.LENGTH_SHORT).show()
-        startMainActivity()
+//        startMainActivity()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun handlePostError(anError: ANError?) {

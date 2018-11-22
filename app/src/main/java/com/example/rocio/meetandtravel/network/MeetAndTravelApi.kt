@@ -26,6 +26,7 @@ class MeetAndTravelApi {
         private val myProvidersWithEvent = "$baseUrl/events/{event_id}/providers"
         private val myAccommodations = "$baseUrl/accommodations/reservations"
         private val ticketTypesPurchase = "$baseUrl/ticket_types/{ticket_types}/purchase"
+        private val providerRegister = "$baseUrl/users/{user_id}/providers"
         val tag = "MeetAndTravel"
 
         //PUBLIC
@@ -143,7 +144,30 @@ class MeetAndTravelApi {
                         }
                     })
         }
+        fun requestProviderRegister(token: String, userId: String, file: File, event: JSONObject, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
+            AndroidNetworking.upload(MeetAndTravelApi.providerRegister)
+                    .addPathParameter("user_id", userId)
+                    .addHeaders("Authorization", String.format("Bearer %s", token))
+                    .addMultipartFile("file", file)
+                    .addMultipartParameter("name", event.getString("name"))
+                    .addMultipartParameter("ruc", event.getString("ruc"))
+                    .addMultipartParameter("description", event.getString("description"))
+                    .addMultipartParameter("location", event.getString("location"))
+                    .addMultipartParameter("telephone", event.getString("telephone"))
+                    .addMultipartParameter("web_address", event.getString("web_address"))
+                    .setPriority(Priority.HIGH)
+                    .setTag(tag)
+                    .build()
+                    .getAsObject(NetworkResponse::class.java, object : ParsedRequestListener<NetworkResponse> {
+                        override fun onResponse(response: NetworkResponse?) {
+                            responseHandler(response)
+                        }
 
+                        override fun onError(anError: ANError?) {
+                            errorHandler(anError)
+                        }
+                    })
+        }
         fun requestMyTickets(token: String, responseHandler: (NetworkResponse?) -> Unit, errorHandler: (ANError?) -> Unit) {
             AndroidNetworking.get(MeetAndTravelApi.myTickets)
                     .addHeaders("Authorization", String.format("Bearer %s", token))

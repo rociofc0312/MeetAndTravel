@@ -77,7 +77,8 @@ class CreateEventActivity : AppCompatActivity() {
     private fun handleEventResponse(response: NetworkResponse?) {
         Toast.makeText(this, "Evento creado satisfactoriamente", Toast.LENGTH_SHORT).show()
         event = response!!.event
-        startCreateTickets()
+//        startCreateTickets()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun handleEventError(anError: ANError?) {

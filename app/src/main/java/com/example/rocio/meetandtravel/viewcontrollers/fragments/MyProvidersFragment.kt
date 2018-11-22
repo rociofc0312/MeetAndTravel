@@ -1,5 +1,6 @@
 package com.example.rocio.meetandtravel.viewcontrollers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -14,6 +15,8 @@ import com.example.rocio.meetandtravel.models.Preferences
 import com.example.rocio.meetandtravel.models.Provider
 import com.example.rocio.meetandtravel.network.MeetAndTravelApi
 import com.example.rocio.meetandtravel.network.NetworkResponse
+import com.example.rocio.meetandtravel.viewcontrollers.activities.CreateProvidersActivity
+import com.example.rocio.meetandtravel.viewcontrollers.activities.LoginActivity
 import com.example.rocio.meetandtravel.viewcontrollers.adapters.MyProvidersAdapter
 import kotlinx.android.synthetic.main.fragment_my_providers.view.*
 
@@ -23,10 +26,21 @@ class MyProvidersFragment : Fragment() {
     private lateinit var myProvidersLayoutManager: RecyclerView.LayoutManager
     private var providers = ArrayList<Provider>()
     var prefs: Preferences? = null
+    private val INVALID_LOGIN = 28800000
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_my_providers, container, false)
+        view.fab.setOnClickListener {
+            Log.d(MeetAndTravelApi.tag, "Parsed: Found ${prefs!!.userToken} token and ${prefs!!.userId} id and time ${prefs!!.time}.")
+            /*MeetAndTravelApi.requestUser(prefs!!.userToken!!, prefs!!.userId.toString(),
+                { response -> handleUserResponse(view.context, response) }, { error -> handleUserError(view.context!!, error)})*/
+            if(validateTime(prefs!!.time)){
+                startActivity(Intent(view.context, LoginActivity::class.java))
+            } else{
+                startActivity(Intent(context, CreateProvidersActivity::class.java))
+            }
+        }
         myProvidersRecyclerView = view.myProvidersRecyclerView
         prefs = Preferences(view.context)
         myProvidersAdapter = MyProvidersAdapter(providers, view.context)
@@ -38,7 +52,11 @@ class MyProvidersFragment : Fragment() {
         MeetAndTravelApi.requestMyProviders(prefs!!.userToken!!, prefs!!.userId.toString(), {response -> handleResponse(response)},{error ->handleError(error)})
         return view
     }
-
+    private fun validateTime(time: Long): Boolean{
+        val currentTime = System.currentTimeMillis()
+        Log.d(MeetAndTravelApi.tag, "Substract: ${currentTime - time}")
+        return currentTime - time > INVALID_LOGIN
+    }
     private fun handleResponse(response: NetworkResponse?) {
         if ("error".equals(response!!.status, true)) {
             Log.d(MeetAndTravelApi.tag, response.message)

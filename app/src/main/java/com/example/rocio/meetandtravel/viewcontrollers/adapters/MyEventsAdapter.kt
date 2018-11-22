@@ -40,11 +40,11 @@ class MyEventsAdapter(var events: List<Event>, val context: Context): RecyclerVi
             popup.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
                 override fun onMenuItemClick(item: MenuItem): Boolean {
                     when (item.itemId) {
-                        R.id.menu1 -> {
-                            val intent = Intent(ctx, UpdateEventActivity::class.java)
-                            intent.putExtra("id", events.id.toString())
-                            ctx?.startActivity(intent)
-                        }
+//                        R.id.menu1 -> {
+//                            val intent = Intent(ctx, UpdateEventActivity::class.java)
+//                            intent.putExtra("id", events.id.toString())
+//                            ctx?.startActivity(intent)
+//                        }
                         R.id.menu2 -> {
                             val intent = Intent(ctx, CreateTicketsActivity::class.java)
                             intent.putExtra("id", events.id.toString())

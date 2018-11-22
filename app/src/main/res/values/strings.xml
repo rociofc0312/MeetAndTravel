@@ -28,6 +28,9 @@
     <string name="provider_contact_title">Contacto:</string>
     <string name="see_spaces_button_text">VER ESPACIOS</string>
     <string name="ruc_title_text">RUC:</string>
+    <string name="ruc_text">RUC</string>
+    <string name="telephone_text">Telephone</string>
+    <string name="web_address_text">Web Address</string>
     <string name="web_title_text">Web:</string>
     <string name="spaces_event_title">Espacios</string>
     <string name="provider_event_title">Proveedor</string>
@@ -56,6 +59,8 @@
     <string name="create_text">Crear</string>
     <string name="new_event_title_text">Crea un nuevo evento</string>
     <string name="new_event_description_text">¡Y atrae a nuevos interesados de distintos lugares!</string>
+    <string name="new_provider_title_text">Crea un nuevo proveedor</string>
+    <string name="new_provider_description_text">¡Y atrae a nuevos interesados de distintos lugares!</string>
     <string name="ticket_name">Ticket</string>
     <string name="ticket_price">Precio</string>
     <string name="quantity_text">Cantidad</string>
